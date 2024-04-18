@@ -1,0 +1,5 @@
+"userid","email","password","role"
+ST001,student@mail.apu.edu.my,1234,student
+LC001,lecture@mail.apu.edu.my,1234,lecture
+AD001,admin@mail.apu.edu.my,1234,admin
+PM001,projectmanager@mail.apu.edu.my,1234,projectmanager
