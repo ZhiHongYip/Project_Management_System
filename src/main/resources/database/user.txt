@@ -1,5 +1,7 @@
-"userid","email","password","role"
-ST001,student@mail.apu.edu.my,1234,student
-LC001,lecture@mail.apu.edu.my,1234,lecture
-AD001,admin@mail.apu.edu.my,1234,admin
-PM001,projectmanager@mail.apu.edu.my,1234,projectmanager
+UserID, Name, Email, Password, Role
+1,Soo Chen Kang,sck@mail.apu.edu.my,1234,student
+2,Yip Zhi Hong,ych@mail.apu.edu.my,1234,lecture
+3,Kong Wei Cheng,kwc@mail.apu.edu.my,1234,admin
+4,Chan Ka Wai,ckw@mail.apu.edu.my,1234,projectmanager
+5,John Doe, jd@mail.apu.edu.my,1234,student
+6,Yong,y@mail.apu.edu.my,1234,lecture
