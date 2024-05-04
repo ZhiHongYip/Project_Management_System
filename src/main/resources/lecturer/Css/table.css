@@ -1,0 +1,27 @@
+.table-view {
+    -fx-background-color:#3E68BD;
+    -fx-font-family:Tisa;
+}
+
+
+.table-view .column-header {
+    -fx-background-color:#3E68BD;
+    -fx-text-background-color:#FCF5E2;
+}
+
+.table-view .table-cell{
+    -fx-border-color:#E3D9C3;
+}
+
+.table-row-cell: hover {
+    -fx-background-color:#52D4F4;
+    -fx-text-background-color:#FCF5E2;
+    -fx-padding:0;
+}
+
+.table-row-cell{
+    -fx-font-family:Tisa;
+    -fx-font-weight:bold;
+}
+
+

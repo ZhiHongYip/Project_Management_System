@@ -1,0 +1,35 @@
+.label{
+    -fx-font-weight: bold;
+    -fx-font-family: Tisa;
+    -fx-font-size: 12;
+}
+
+.button{
+    -fx-font-weight: bold;
+    -fx-font-family: Tisa;
+    -fx-font-size: 12;
+}
+
+.text-field{
+    -fx-font-weight: bold;
+    -fx-font-family: Tisa;
+    -fx-font-size: 12;
+}
+
+Text {
+    -fx-font-weight: bold;
+    -fx-font-family: Tisa;
+}
+
+.check-box{
+    -fx-font-weight: bold;
+    -fx-font-family: Tisa;
+    -fx-font-size: 12;
+
+}
+
+.radio-button{
+    -fx-font-weight: bold;
+    -fx-font-family: Tisa;
+    -fx-font-size: 12;
+}

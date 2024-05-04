@@ -1,0 +1,27 @@
+.menu-button {
+    -fx-background-color: #8400d4;
+}
+
+.root {
+    -fx-background-color: #ba5555;
+    -fx-padding: 10;
+}
+
+.context-menu {
+    -fx-background-color: #006699;
+    -fx-text-fill: white;
+    -fx-padding: 5em 0 0 0 ;
+    top: 5em;
+}
+
+.menu-item .label {
+    -fx-text-fill: #11534b;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.menu-button:openvertically .context-menu {
+    -fx-translate-y: 20;
+}
