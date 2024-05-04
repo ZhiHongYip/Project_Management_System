@@ -1,16 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.project_management_system.PMS_Controller">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="@../../../lecturer/Css/Font.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_management_system.PMS_Controller">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="551.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="402.0">
+               <children>
+                  <ImageView fitHeight="468.0" fitWidth="487.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../lecturer/Icon/logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="400.0" fitWidth="402.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <VBox layoutX="468.0" prefHeight="468.0" prefWidth="294.0" style="-fx-background-color: #FEEFC3;">
+         <children>
+            <AnchorPane prefHeight="467.0" prefWidth="294.0">
+               <children>
+                  <ImageView fitHeight="105.0" fitWidth="107.0" layoutX="89.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../lecturer/Icon/account.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="login" layoutX="92.0" layoutY="370.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="100.0" stylesheets="@../../../lecturer/Css/confirmbtn.css" text="Login" />
+                  <VBox layoutX="35.0" layoutY="212.0">
+                     <children>
+                        <TextField fx:id="username" onKeyPressed="#usernamePressed" style="-fx-background-color: #FEEFC3; -fx-padding: 5 0 5 0; -fx-text-fill: #202124;">
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Line endX="129.0928192138672" endY="-0.07812263816595078" startX="-100.0" stroke="#00add2">
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
+                        </Line>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="35.0" layoutY="293.0">
+                     <children>
+                        <PasswordField fx:id="password" onKeyPressed="#passwordPressed" style="-fx-background-color: #FEEFC3; -fx-padding: 5 0 5 0; -fx-text-fill: #202124;">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="14.0" />
+                           </font>
+                        </PasswordField>
+                        <Line endX="129.0928192138672" endY="-0.20710676908493042" startX="-100.0" stroke="#00add2" />
+                     </children>
+                  </VBox>
+                  <Label layoutX="34.0" layoutY="194.0" text="USERNAME" textFill="#34a853">
+                     <font>
+                        <Font name="Sitka Text" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="275.0" text="PASSWORD" textFill="#34a853">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="errorUsername" layoutX="34.0" layoutY="245.0" prefHeight="18.0" prefWidth="231.0" textFill="#4285f4">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="errorPassword" layoutX="34.0" layoutY="328.0" prefHeight="18.0" prefWidth="231.0" textFill="#4285f4">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
