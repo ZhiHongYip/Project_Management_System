@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="552.0" prefWidth="933.0" style="-fx-background-color: FCF5E2;" stylesheets="@Css/Font.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lecturer.ReportController">
+   <children>
+      <HBox prefHeight="619.0" prefWidth="286.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="264.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="266.0" style="-fx-background-color: FCF5E2;">
+                     <children>
+                        <ImageView fitHeight="157.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-width: 1;">
+                           <VBox.margin>
+                              <Insets bottom="14.0" left="7.0" right="7.0" top="7.0" />
+                           </VBox.margin>
+                           <effect>
+                              <Blend />
+                           </effect>
+                           <image>
+                              <Image url="@Icon/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Line endX="164.2928924560547" endY="1.6033649444580078E-5" startX="-100.0" />
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="280.0" prefWidth="266.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="240.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToDashBoard" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="DASHBOARD" textFill="#0b0b0b" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/presentation.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToCalendar" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="CALENDAR" textFill="#030303" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/request.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToSuperviseeList" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="SUPERVISEES LIST" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <children>
+                              <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/second_marker.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToSecondMarker" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="SECOND MARKER" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <children>
+                              <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/report.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToReport" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="REPORT" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <AnchorPane prefHeight="34.0" prefWidth="266.0">
+                     <children>
+                        <ImageView fitHeight="54.0" fitWidth="50.0" layoutX="55.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="label_username" layoutX="117.0" layoutY="25.0" prefHeight="22.0" prefWidth="145.0" text="LECTURER">
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="264.0">
+                     <children>
+                        <Line endX="100.0" startX="-100.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Line>
+                        <Button mnemonicParsing="false" onAction="#signOut" prefHeight="26.0" prefWidth="85.0" stylesheets="@Css/plusbtn.css" text="Log Out" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+         </children>
+      </HBox>
+      <VBox layoutX="268.0" prefHeight="619.0" prefWidth="788.0">
+         <children>
+            <AnchorPane prefHeight="48.0" prefWidth="789.0" style="-fx-background-color: FD5C5A; -fx-border-width: 0.1; -fx-border-color: #222;">
+               <children>
+                  <Text fill="#fcf5e2" layoutX="270.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REPORT" x="78.0">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <VBox prefHeight="119.0" prefWidth="789.0">
+               <children>
+                  <AnchorPane prefHeight="119.0" prefWidth="789.0">
+                     <children>
+                        <VBox layoutX="35.0" layoutY="27.0" prefHeight="17.0" prefWidth="100.0">
+                           <children>
+                              <TextField fx:id="studentIDTBox" promptText="StudentID" stylesheets="@Css/textfield.css">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </TextField>
+                              <Line endX="50.0" startX="-100.0" visible="false" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="222.0" layoutY="27.0">
+                           <children>
+                              <TextField fx:id="assessmentIDTBox" promptText="AssessmentID" stylesheets="@Css/textfield.css">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </TextField>
+                              <Line endX="96.89292907714844" startX="-100.0" visible="false" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="454.0" layoutY="27.0">
+                           <children>
+                              <TextField fx:id="intakeTBox" promptText="Intake" stylesheets="@Css/textfield.css">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </TextField>
+                              <Line endX="50.0" startX="-100.0" visible="false" />
+                           </children>
+                        </VBox>
+                        <CheckBox fx:id="Ungrade" layoutX="187.0" layoutY="82.0" mnemonicParsing="false" stylesheets="@Css/checkbox.css" text="Ungrade" textFill="#123c69">
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="Graded" layoutX="335.0" layoutY="82.0" mnemonicParsing="false" stylesheets="@Css/checkbox.css" text="Graded" textFill="#123c69">
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <Button layoutX="662.0" layoutY="25.0" maxWidth="86.0" minHeight="18.0" mnemonicParsing="false" onAction="#search" prefHeight="38.0" prefWidth="86.0" stylesheets="@Css/searchbtn.css" text="Search">
+                           <effect>
+                              <DropShadow blurType="TWO_PASS_BOX" />
+                           </effect>
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <RadioButton fx:id="selectAll" layoutX="492.0" layoutY="79.0" mnemonicParsing="false" onAction="#select_All" stylesheets="@Css/radiobtn.css" text="Select All" textFill="#123c69">
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="14.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <VBox prefHeight="453.0" prefWidth="789.0">
+               <children>
+                  <TableView fx:id="reportList" prefHeight="458.0" style="-fx-background-color: white; -fx-padding: 0;" stylesheets="@Css/table.css">
+                     <columns>
+                        <TableColumn fx:id="columnReportNo" prefWidth="41.3333740234375" text="No" />
+                        <TableColumn fx:id="columnReportID" prefWidth="78.0" text="ReportID" />
+                        <TableColumn fx:id="columnStudentID" prefWidth="90.66668701171875" text="StudentID" />
+                        <TableColumn fx:id="columnIntake" prefWidth="112.00003051757812" text="Intake" />
+                        <TableColumn fx:id="columnAssessmentID" prefWidth="109.3333740234375" text="AssessmentID" />
+                        <TableColumn fx:id="columnSubmissionDate" prefWidth="133.99993896484375" text="Submission Date" />
+                        <TableColumn fx:id="columnGrade" minWidth="0.0" prefWidth="118.0" text="Grade" />
+                        <TableColumn fx:id="columnStatus" prefWidth="101.99993896484375" text="Status" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

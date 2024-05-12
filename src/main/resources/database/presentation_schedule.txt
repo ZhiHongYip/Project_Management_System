@@ -1,1 +1,14 @@
-PresentationID, ReportID, Date, Slot, LecturerID (Supervisor), approval, LecturerID(Second Marker), approval, Status
+1,5,Exam,Fall 2024,123,2024-05-12,10:00AM,102,Approve,103,Pending,Pending
+2,8,Exam Project,Spring 2026,124,2024-05-12,12:00PM,102,Reject,103,Pending,Pending
+3,12,Exam,Spring 2028,125,2024-05-12,11:00AM,102,Approve,103,Pending,Pending
+4,16,Assignment,Spring 2030,126,2024-05-12,3:00PM,102,Reject,103,Approve,Pending
+5,19,Assignment,Fall 2031,127,2024-05-12,9:00AM,102,Approve,103,Pending,Pending
+6,3,Assignment,Fall 2023,128,2024-05-12,2:00AM,103,Approve,102,Approve,Approve
+7,9,Presentation,Fall 2026,129,2024-05-12,12:00AM,102,Pending,103,Pending,Pending
+8,7,Presentation,Fall 2025,130,2024-05-12,11:00AM,103,Pending,102,Approve,Pending
+9,14,Project,Spring 2029,131,2024-05-12,2:00PM,103,Approve,102,Reject,Pending
+10,1,Project,Fall 2022,132,2024-05-12,9:00AM,103,Approve,102,Pending,Pending
+11,20,Project,Spring 2032,133,2024-05-12,4:00PM,102,Pending,103,Reject,Pending
+12,11,Thesis,Fall 2027,134,2024-05-12,11:00AM,102,Pending,103,Pending,Pending
+13,10,Thesis,Spring 2027,135,2024-05-12,5:00PM,103,Pending,102,Reject,Pending
+14,6,Thesis,Spring 2025,136,2024-05-12,12:00PM,103,Pending,102,Approve,Pending
