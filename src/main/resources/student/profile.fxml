@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.ProfileController">
+   <children>
+      <Label layoutX="357.0" layoutY="108.0" text="Student ID">
+         <font>
+            <Font name="Bookman Old Style" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="studentID" layoutX="517.0" layoutY="108.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="150.0" text="Intake">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="email" layoutX="517.0" layoutY="153.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="399.0" layoutY="195.0" text="Email">
+         <font>
+            <Font name="Bookman Old Style" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="name" layoutX="517.0" layoutY="195.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="455.0" layoutY="14.0" text="Profile">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="238.0" text="Name">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="intake" layoutX="517.0" layoutY="241.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="presentationTable" layoutX="47.0" layoutY="350.0" prefHeight="339.0" prefWidth="886.0">
+        <columns>
+          <TableColumn fx:id="assessmentTypeCol" prefWidth="228.0" text="Assessment" />
+            <TableColumn fx:id="dateCol" prefWidth="228.0" text="Date" />
+            <TableColumn fx:id="slotCol" prefWidth="228.0" text="Slot" />
+          <TableColumn fx:id="statusCol" prefWidth="216.0" text="Status" />
+        </columns>
+      </TableView>
+      <Label layoutX="375.0" layoutY="317.0" text="Request Presentation Status">
+         <font>
+            <Font name="Bodoni MT Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@css/table.css" />
+      <URL value="@css/styles.css" />
+      <URL value="@css/label.css" />
+   </stylesheets>
+</AnchorPane>

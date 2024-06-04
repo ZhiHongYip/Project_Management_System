@@ -14,6 +14,7 @@ module com.example.project_management_system {
 
 
     opens com.example.project_management_system to javafx.fxml;
+    opens student to javafx.fxml;
     exports com.example.project_management_system;
     exports project_manager;
     exports lecturer;
