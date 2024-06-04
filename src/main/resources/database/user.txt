@@ -5,3 +5,4 @@ UserID, Name, Email, Password, Role
 4,Chan Ka Wai,ckw@mail.apu.edu.my,1234,projectmanager
 5,John Doe, jd@mail.apu.edu.my,1234,student
 6,Yong,y@mail.apu.edu.my,1234,lecture
+102,y,y,y,lecture

@@ -29,10 +29,11 @@ public class PMS_Controller {
     public Label errorPassword;
     @FXML
     private TextField username;
+    public static String lecturerID;
 
 
 
-    static Stage primaryStage;
+    public static Stage primaryStage;
     public void initialize() {
 
     }
@@ -76,7 +77,8 @@ public class PMS_Controller {
                 LoadPage("/student/StudentHomePage.fxml", event, actionEvent);
             } else if (Log_in.equals("True") && userData[4].equals("lecture")) {
                 System.out.println("Navigate to Lecture Page");
-                String path = "/lecturer/LecturerHomePage.fxml";
+                String path = "/lecturer/DashBoard.fxml";
+                lecturerID = userData[0];
                 LoadPage(path, event, actionEvent);
             } else if (Log_in.equals("True") && userData[4].equals("admin")) {
                 LoadPage("/admin/AdminHomePage.fxml", event, actionEvent);
