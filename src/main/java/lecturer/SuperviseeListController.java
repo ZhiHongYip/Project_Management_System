@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class SuperviseeListController implements Initializable {
+public class SuperviseeListController extends CellTable implements Initializable {
 
     @FXML
     private CheckBox Approve;
@@ -170,8 +170,8 @@ public class SuperviseeListController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
-    private void setCellTable(){
+    @Override
+    public void setCellTable(){
         this.columnStudentNo.setCellValueFactory(new PropertyValueFactory<>("studentNo"));
         this.columnStudentID.setCellValueFactory(new PropertyValueFactory<>("studentID"));
         this.columnStudentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
@@ -336,7 +336,7 @@ public class SuperviseeListController implements Initializable {
                 while ((line = reader4.readLine())!= null){
                     String[] info2 = line.split(",");
                     System.out.println(Arrays.toString(info2));
-                    if (info[3].contains(this.assessmentType) && info2[0].contains(this.studentID) && info[7].equals(PMS_Controller.lecturerID)) {
+                    if (info[3].contains(this.assessmentType) && info2[0].contains(this.studentID)) {
                         System.out.println("Stage 2");
                         assessmentType = info[3];
                         System.out.println("assessmentType" + assessmentType);
@@ -349,7 +349,7 @@ public class SuperviseeListController implements Initializable {
                             while ((line1 = reader1.readLine()) != null) {
                                 String[] student = line1.split(",");
                                 System.out.println(Arrays.toString(student));
-                                if (student[2].equals(assessmentType) && student[1].equals(studentID)) {
+                                if (student[2].equals(assessmentType) && student[1].equals(studentID) && student[7].equals(PMS_Controller.lecturerID)) {
                                     studentName = info2[1];
                                     if(this.Pending.isSelected()){
                                         this.addPending(student,studentName);
@@ -413,13 +413,14 @@ public class SuperviseeListController implements Initializable {
 
         }else if (!this.studentIDTBox.getText().trim().isEmpty() && !this.intakeTBox.getText().trim().isEmpty() && !this.assessmentTypeTBox.getText().trim().isEmpty()){
             System.out.println("sort by all");
+            Set<String> printedAssessmentTypes = new HashSet<>();
             while ((line2 = reader2.readLine()) != null){
                 System.out.println("stage 1");
                 String[] info = line2.split(",");
                 BufferedReader reader4 = new BufferedReader(new FileReader("src/main/resources/database/student.txt"));
                 while ((line = reader4.readLine())!= null){
                     String[] info2 = line.split(",");
-                    if (info[3].contains(this.assessmentType) && info2[3].contains(this.intake) && info2[0].contains(this.studentID) && info[7].equals(PMS_Controller.lecturerID)) {
+                    if (info[3].contains(this.assessmentType) && info2[3].contains(this.intake) && info2[0].contains(this.studentID) ) {
                         System.out.println("Stage 2");
                         assessmentType = info[3];
                         System.out.println("assessmentType" + assessmentType);
@@ -430,16 +431,21 @@ public class SuperviseeListController implements Initializable {
                         BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/presentation_schedule.txt"));
                         while ((line1 = reader1.readLine()) != null) {
                             String[] student = line1.split(",");
-                            if (student[2].equals(assessmentType) && student[3].equals(intake) && student[1].equals(studentID)) {
-                                studentName = info2[2];
-                                if(this.Pending.isSelected()){
-                                    this.addPending(student,studentName);
-                                }
-                                if (this.Approve.isSelected()){
-                                    this.addApprove(student,studentName);
-                                }
-                                if (this.Reject.isSelected()){
-                                    this.addReject(student,studentName);
+                            if (student[2].equals(assessmentType) && student[3].equals(intake) && student[1].equals(studentID) && student[7].equals(PMS_Controller.lecturerID)) {
+                                System.out.println("Stage 3");
+                                studentName = info2[1];
+                                if (!printedAssessmentTypes.contains(assessmentType)) {
+                                    System.out.println("AssessmentType: " + assessmentType);
+                                    printedAssessmentTypes.add(assessmentType);
+                                    if (this.Pending.isSelected()) {
+                                        this.addPending(student, studentName);
+                                    }
+                                    if (this.Approve.isSelected()) {
+                                        this.addApprove(student, studentName);
+                                    }
+                                    if (this.Reject.isSelected()) {
+                                        this.addReject(student, studentName);
+                                    }
                                 }
                             }
                         }
@@ -481,21 +487,21 @@ public class SuperviseeListController implements Initializable {
 
     private void addPending(String[]student, String studentName)throws IOException{
         if (student[11].equals("Pending")){
-            this.superviseeData.add(new SuperviseeList(this.i,Integer.parseInt(student[1]),studentName,student[2],student[3],student[5],student[6],student[11]));
+            this.superviseeData.add(new SuperviseeList(this.i,student[1],studentName,student[2],student[3],student[5],student[6],student[11]));
             this.i++;
         }
     }
 
     private void addApprove(String[]student, String studentName)throws IOException{
         if (student[11].equals("Approve")){
-            this.superviseeData.add(new SuperviseeList(this.i,Integer.parseInt(student[1]),studentName,student[2],student[3],student[5],student[6],student[11]));
+            this.superviseeData.add(new SuperviseeList(this.i,student[1],studentName,student[2],student[3],student[5],student[6],student[11]));
             this.i++;
         }
     }
 
     private void addReject(String[]student, String studentName)throws IOException{
         if (student[11].equals("Reject")){
-            this.superviseeData.add(new SuperviseeList(this.i,Integer.parseInt(student[1]),studentName,student[2],student[3],student[5],student[6],student[11]));
+            this.superviseeData.add(new SuperviseeList(this.i,student[1],studentName,student[2],student[3],student[5],student[6],student[11]));
             this.i++;
         }
     }

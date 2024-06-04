@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Dashboard {
     public SimpleIntegerProperty studentNo = new SimpleIntegerProperty();
-    public SimpleIntegerProperty studentID = new SimpleIntegerProperty();
+    public SimpleStringProperty studentID = new SimpleStringProperty();
     public SimpleStringProperty studentName = new SimpleStringProperty();
     public SimpleStringProperty date = new SimpleStringProperty();
     public SimpleStringProperty slot = new SimpleStringProperty();
@@ -19,7 +19,11 @@ public class Dashboard {
     public DateTimeFormatter formatterTemp =DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    public Dashboard(int studentNo, int studentID, String studentName, String date, String slot,
+    public Dashboard(){
+
+    }
+
+    public Dashboard(int studentNo, String studentID, String studentName, String date, String slot,
                      String supervisorApproval, String secondMarkerApproval, String status){
         this.studentNo.set(studentNo);
         this.studentID.set(studentID);
@@ -46,16 +50,16 @@ public class Dashboard {
         this.studentNo.set(studentNo);
     }
 
-    public int getStudentID() {
+    public String getStudentID() {
         return studentID.get();
     }
 
-    public SimpleIntegerProperty studentIDProperty() {
+    public SimpleStringProperty studentIDProperty() {
         return studentID;
     }
 
     public void setStudentID(int studentID) {
-        this.studentID.set(studentID);
+        this.studentID.set(String.valueOf(studentID));
     }
 
     public String getStudentName() {

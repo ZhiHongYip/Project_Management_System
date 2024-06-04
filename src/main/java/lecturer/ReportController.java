@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class ReportController implements Initializable {
+public class ReportController extends CellTable implements Initializable  {
     @FXML
     private CheckBox Graded;
 
@@ -159,8 +159,8 @@ public class ReportController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.showReportInfo();
     }
-
-    private void setCellTable(){
+    @Override
+    public void setCellTable(){
         this.columnReportNo.setCellValueFactory(new PropertyValueFactory<>("reportNo"));
         this.columnReportID.setCellValueFactory(new PropertyValueFactory<>("reportID"));
         this.columnStudentID.setCellValueFactory(new PropertyValueFactory<>("studentID"));
@@ -204,9 +204,9 @@ public class ReportController implements Initializable {
             while ((line = reader.readLine()) != null){
                 String[] info = line.split(",");
                 System.out.println(Arrays.toString(info));
-                if (info[0].contains(this.studentID)){
+                if (info[2].contains(this.studentID)){
                     System.out.println(info[2]);
-                    studentID = info[0];
+                    studentID = info[2];
                     BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                     while ((line1 = reader1.readLine()) != null) {
                         String[] report = line1.split(",");
@@ -288,9 +288,9 @@ public class ReportController implements Initializable {
             while ((line = reader.readLine()) != null) {
                 String[] info = line.split(",");
                 System.out.println(Arrays.toString(info));
-                if (info[0].contains(this.studentID) && info[3].contains(this.intake)) {
+                if (info[2].contains(this.studentID) && info[3].contains(this.intake)) {
                     System.out.println(info[2]);
-                    studentID = info[0];
+                    studentID = info[2];
                     intake = info[3];
                     BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                     while ((line1 = reader1.readLine()) != null) {
@@ -318,11 +318,11 @@ public class ReportController implements Initializable {
                 while ((line = reader4.readLine())!= null){
                     String[] info2 = line.split(",");
                     System.out.println(Arrays.toString(info2));
-                    if (info[0].contains(this.assessmentID) && info2[0].contains(this.studentID) && info[7].equals(PMS_Controller.lecturerID)) {
+                    if (info[0].contains(this.assessmentID) && info2[2].contains(this.studentID) && info2[10].equals(PMS_Controller.lecturerID)) {
                         System.out.println("Stage 2");
                         assessmentID = info[0];
                         System.out.println("assessmentID" + assessmentID);
-                        studentID = info2[0];
+                        studentID = info2[2];
                         System.out.println("studentID" + studentID);
                         if (!printedAssessmentTypes.contains(assessmentID)) {
                             System.out.println("AssessmentID: " + assessmentID);
@@ -395,13 +395,13 @@ public class ReportController implements Initializable {
                 BufferedReader reader4 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                 while ((line = reader4.readLine())!= null){
                     String[] info2 = line.split(",");
-                    if (info[0].contains(this.assessmentID) && info2[3].contains(this.intake) && info2[0].contains(this.studentID) && info[7].equals(PMS_Controller.lecturerID)) {
+                    if (info[0].contains(this.assessmentID) && info2[3].contains(this.intake) && info2[2].contains(this.studentID) && info2[10].equals(PMS_Controller.lecturerID)) {
                         System.out.println("Stage 2");
                         assessmentID = info[0];
                         System.out.println("assessmentID" + assessmentID);
                         intake = info2[3];
                         System.out.println("intake" + intake);
-                        studentID = info2[0];
+                        studentID = info2[2];
                         System.out.println("studentID: "+ studentID);
                         BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                         while ((line1 = reader1.readLine()) != null) {
@@ -424,7 +424,7 @@ public class ReportController implements Initializable {
             System.out.println("No Filter");
             while ((line = reader.readLine()) != null) {
                 String[] info = line.split(",");
-                studentID = info[0];
+                studentID = info[2];
                 System.out.println(studentID);
                 BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                 while ((line1 = reader1.readLine()) != null) {

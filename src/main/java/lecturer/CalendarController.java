@@ -1,7 +1,6 @@
 package lecturer;
 
 import com.calendarfx.model.CalendarSource;
-import com.calendarfx.model.Calendar;
 import com.calendarfx.model.Entry;
 import com.calendarfx.view.CalendarView;
 import com.calendarfx.view.page.PageBase;
@@ -28,7 +27,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-public class CalendarController implements Initializable {
+public class CalendarController extends CalendarEntryCreatorAbstract implements Initializable {
 
     @FXML
     private WeekPage calendar;
@@ -143,51 +142,24 @@ public class CalendarController implements Initializable {
         return entries;
     }
 
-    private Entry<?> createCalendarEntry(lecturer.Calendar calendar1) {
+    @Override
+    protected Entry<?> createCalendarEntry(Calendar calendar1) {
         Entry<?> entry = new Entry<>();
         entry.setTitle(calendar1.getStudentName());
         entry.setInterval(calendar1.getDate().atTime(calendar1.getSlot()),
                 calendar1.getDate().atTime(calendar1.getSlot()).plusHours(1));
         setStyleBasedOnStatus(entry, calendar1.getStatus());
-        // You can set other properties of the entry if needed
         return entry;
-    }
-
-    private void setStyleBasedOnStatus(Entry<?> entry, String status) {
-        System.out.println("change");
-        switch (status) {
-            case "Approve":
-                entry.getStyleClass().add("entry-approve");
-                break;
-            case "Pending":
-                entry.getStyleClass().add("entry-pending");
-                System.out.println("setPendingcolor");
-                break;
-            case "Reject":
-                entry.getStyleClass().add("entry-reject");
-                break;
-            // Add more cases for other statuses if needed
-            default:
-                // Set a default style for unknown statuses
-                entry.getStyleClass().add("entry-default");
-                break;
-        }
-        entry.getStyleClass().add("entry-black");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
+        System.out.println("Calendar loaded");
         List<lecturer.Calendar> events = loadPresentationEntriesFromFile("src/main/resources/database/presentation_schedule.txt", "src/main/resources/database/student.txt");
-        // Create a map to store calendars based on assessment types
         for (lecturer.Calendar event : events) {
             Entry<?> calendarEntry = createCalendarEntry(event);
             calendar.getCalendarSources().get(0).getCalendars().get(0).addEntry(calendarEntry);
-
         }
-
-
     }
 
 }

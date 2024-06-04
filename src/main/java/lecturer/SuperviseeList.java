@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class SuperviseeList {
     public SimpleIntegerProperty studentNo = new SimpleIntegerProperty();
-    public SimpleIntegerProperty studentID = new SimpleIntegerProperty();
+    public SimpleStringProperty studentID = new SimpleStringProperty();
     public SimpleStringProperty studentName = new SimpleStringProperty();
     public SimpleStringProperty assessmentType = new SimpleStringProperty();
     public SimpleStringProperty intake = new SimpleStringProperty();
@@ -32,7 +32,7 @@ public class SuperviseeList {
         this.studentNo.set(studentNo);
     }
 
-    public SuperviseeList(int studentNo, int studentID, String studentName, String assessmentType, String intake,
+    public SuperviseeList(int studentNo, String studentID, String studentName, String assessmentType, String intake,
                           String date, String slot, String status)
     {
         this.studentNo.set(studentNo);
@@ -48,16 +48,16 @@ public class SuperviseeList {
         this.status.set(status);
     }
 
-    public int getStudentID() {
+    public String getStudentID() {
         return studentID.get();
     }
 
-    public SimpleIntegerProperty studentIDProperty() {
+    public SimpleStringProperty studentIDProperty() {
         return studentID;
     }
 
     public void setStudentID(int studentID) {
-        this.studentID.set(studentID);
+        this.studentID.set(String.valueOf(studentID));
     }
 
     public String getStudentName() {

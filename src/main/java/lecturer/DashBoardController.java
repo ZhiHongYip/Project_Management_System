@@ -31,7 +31,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class DashBoardController implements Initializable {
+public class DashBoardController extends CellTable implements Initializable {
 
     @FXML
     private TableColumn<?, ?> columnDate;
@@ -92,7 +92,7 @@ public class DashBoardController implements Initializable {
     MenuItem reject = new MenuItem("Reject");
     String check;
     Dashboard selectedSupervisee;
-    public static SimpleIntegerProperty dummyStudentID;
+    public static SimpleStringProperty dummyStudentID;
     public static SimpleStringProperty dummyDate;
     public static SimpleStringProperty dummySlot;
 
@@ -210,8 +210,8 @@ public class DashBoardController implements Initializable {
             e.printStackTrace();
         }
     }
-
-    private void setCellTable(){
+    @Override
+    public void setCellTable(){
         this.columnStudentNo.setCellValueFactory(new PropertyValueFactory<>("studentNo"));
         this.columnStudentID.setCellValueFactory(new PropertyValueFactory<>("studentID"));
         this.columnName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
@@ -232,16 +232,14 @@ public class DashBoardController implements Initializable {
         while ((line = reader.readLine()) != null) {
             String[] info = line.split(",");
             studentID = info[0];
-            System.out.println("StudentID: " + info[0]);
             BufferedReader reader2 = new BufferedReader(new FileReader("src/main/resources/database/presentation_schedule.txt"));
             while ((line1 = reader2.readLine()) != null) {
                 String[] student = line1.split(",");
-                System.out.println("Filtering Data");
                 if (student[1].equals(studentID) && student[7].equals(PMS_Controller.lecturerID)) {
                     studentName = info[1];
                     System.out.println(student[11]);
                     if (student[11].equals("Pending")){
-                        this.presentationRequestData.add(new Dashboard(this.i,Integer.parseInt(student[1]),studentName,student[5],student[6],student[8],student[10],student[11]));
+                        this.presentationRequestData.add(new Dashboard(this.i,student[1],studentName,student[5],student[6],student[8],student[10],student[11]));
                         this.i++;
                     }
                 }
@@ -349,7 +347,7 @@ public class DashBoardController implements Initializable {
         BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/presentation_schedule.txt"));
         while ((line = reader.readLine()) != null ){
             String [] info = line.split(",");
-            int selectedStudentID = this.selectedSupervisee.getStudentID();
+            String selectedStudentID = this.selectedSupervisee.getStudentID();
             String selectedDate = this.selectedSupervisee.getDate();
             String selectedSlot = this.selectedSupervisee.getSlot();
             String selectedSupervisorApproval = this.selectedSupervisee.getSupervisorApproval();
@@ -360,7 +358,7 @@ public class DashBoardController implements Initializable {
             System.out.println("selected supervisor approval: "+this.selectedSupervisee.getSupervisorApproval());
             System.out.println("selected second marker approval: "+this.selectedSupervisee.getSecondMarkerApproval());
 
-            if (Integer.parseInt(info[1])== selectedStudentID && info[5].equals(selectedDate) && info[6].equals(selectedSlot)
+            if (info[1].equals(selectedStudentID) && info[5].equals(selectedDate) && info[6].equals(selectedSlot)
                     && info[8].equals(selectedSupervisorApproval )&& info[10].equals(selectedSecondMarkerApproval)){
                 System.out.println(STR."check value: \{check}");
                 if (this.check.equals("Approve") && info[7].equals(PMS_Controller.lecturerID)){

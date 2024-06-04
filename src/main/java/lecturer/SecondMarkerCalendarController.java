@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class SecondMarkerCalendarController implements Initializable {
+public class SecondMarkerCalendarController extends CalendarEntryCreatorAbstract implements Initializable {
     @FXML
     private WeekPage secondMarkerCalendar;
 
@@ -85,48 +85,23 @@ public class SecondMarkerCalendarController implements Initializable {
         return entries;
     }
 
-    private Entry<?> createCalendarEntry(Calendar calendar1) {
+    @Override
+    protected Entry<?> createCalendarEntry(Calendar calendar1) {
         Entry<?> entry = new Entry<>();
         entry.setTitle(calendar1.getStudentName());
         entry.setInterval(calendar1.getDate().atTime(calendar1.getSlot()),
                 calendar1.getDate().atTime(calendar1.getSlot()).plusHours(1));
         setStyleBasedOnStatus(entry, calendar1.getStatus());
-        // You can set other properties of the entry if needed
         return entry;
-    }
-
-    private void setStyleBasedOnStatus(Entry<?> entry, String status) {
-        switch (status) {
-            case "Approve":
-                entry.getStyleClass().add("entry-approve");
-                break;
-            case "Pending":
-                entry.getStyleClass().add("entry-pending");
-                System.out.println("setPendingcolor");
-                break;
-            case "Reject":
-                entry.getStyleClass().add("entry-reject");
-                break;
-            // Add more cases for other statuses if needed
-            default:
-                // Set a default style for unknown statuses
-                entry.getStyleClass().add("entry-default");
-                break;
-        }
-        entry.getStyleClass().add("entry-black");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("SecondMarkerCalendar loaded");
         List<lecturer.Calendar> events = loadPresentationEntriesFromFile("src/main/resources/database/presentation_schedule.txt", "src/main/resources/database/student.txt");
-        // Create a map to store calendars based on assessment types
         for (lecturer.Calendar event : events) {
             Entry<?> calendarEntry = createCalendarEntry(event);
             secondMarkerCalendar.getCalendarSources().get(0).getCalendars().get(0).addEntry(calendarEntry);
-
         }
-
-
     }
 }
