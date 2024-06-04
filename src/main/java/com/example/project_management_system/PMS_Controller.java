@@ -15,11 +15,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class PMS_Controller {
     public Button login;
@@ -29,8 +32,11 @@ public class PMS_Controller {
     public Label errorPassword;
     @FXML
     private TextField username;
+    private static String currentUserID;
 
-
+    public static String getLoggedInUserID() {
+        return currentUserID;
+    }
 
     static Stage primaryStage;
     public void initialize() {
@@ -73,6 +79,8 @@ public class PMS_Controller {
                 }
             }
             if (Log_in.equals("True") && userData[4].equals("student")){
+                currentUserID = userData[0];
+                System.out.println("Current User ID: " + currentUserID);
                 LoadPage("/student/StudentHomePage.fxml", event, actionEvent);
             } else if (Log_in.equals("True") && userData[4].equals("lecture")) {
                 System.out.println("Navigate to Lecture Page");
