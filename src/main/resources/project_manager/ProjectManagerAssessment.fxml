@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="scenePane" prefHeight="703.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project_manager.ProjectManagerAssessmentController">
+   <children>
+      <ImageView fitHeight="696.0" fitWidth="694.0" layoutX="390.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Users/user/OneDrive/Object%20Oriented%20Java/white.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="696.0" fitWidth="694.0" layoutX="451.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Users/user/OneDrive/Object%20Oriented%20Java/white.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="696.0" fitWidth="702.0" layoutX="-92.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Users/user/OneDrive/Object%20Oriented%20Java/white.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="createbutton" layoutX="673.0" layoutY="475.0" mnemonicParsing="false" onAction="#clickCreate" prefHeight="26.0" prefWidth="294.0" text="Create" textFill="#116cf4">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Button>
+      <TableView fx:id="tableAssessment" layoutX="14.0" layoutY="140.0" prefHeight="298.0" prefWidth="1078.0">
+         <columns>
+            <TableColumn fx:id="projectIdColumn" prefWidth="94.39999008178711" text="Ass_ID" />
+            <TableColumn fx:id="Project" prefWidth="130.4000244140625" text="Ass_Name" />
+            <TableColumn fx:id="Description" minWidth="0.0" prefWidth="194.3999786376953" text="Description" />
+            <TableColumn fx:id="Types" minWidth="0.0" prefWidth="116.0" text="Types" />
+            <TableColumn fx:id="Intake" minWidth="0.0" prefWidth="147.199951171875" text="Intake" />
+            <TableColumn fx:id="Lecture" prefWidth="94.4000244140625" text="Lecture_ID" />
+            <TableColumn fx:id="Marker" prefWidth="149.5999755859375" text="Second Marker_ID" />
+            <TableColumn fx:id="dueDateColumn" prefWidth="146.39996337890625" text="Due Date" />
+         </columns>
+      </TableView>
+      <TextField fx:id="fieldProjectName" layoutX="156.0" layoutY="485.0" prefHeight="26.0" prefWidth="174.0" />
+      <Text layoutX="50.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ass Name :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="53.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text layoutX="80.0" layoutY="591.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Types  :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="80.0" layoutY="629.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intake :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font></Text>
+      <Text layoutX="367.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecture_ID :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="47.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Text>
+      <TextField fx:id="fieldDescription" layoutX="156.0" layoutY="525.0" prefHeight="26.0" prefWidth="174.0" />
+      <Button fx:id="exit" layoutX="26.0" layoutY="661.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="59.0" text="Back" textFill="#ec120a">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Button>
+      <ChoiceBox fx:id="fieldLecture" layoutX="480.0" layoutY="476.0" prefHeight="26.0" prefWidth="174.0" />
+      <ChoiceBox fx:id="fieldTypes" layoutX="156.0" layoutY="571.0" prefHeight="26.0" prefWidth="174.0" />
+      <ChoiceBox fx:id="fieldIntake" layoutX="156.0" layoutY="609.0" prefHeight="26.0" prefWidth="174.0" />
+      <Button fx:id="updateButton" layoutX="359.0" layoutY="608.0" mnemonicParsing="false" onAction="#clickUpdate" prefHeight="26.0" prefWidth="294.0" text="Update " textFill="#3fbc52">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Button>
+      <DatePicker fx:id="selectDate" layoutX="479.0" layoutY="563.0" onAction="#setSelectDate" />
+      <Text layoutX="374.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Text>
+      <Button fx:id="deleteButton" layoutX="673.0" layoutY="518.0" mnemonicParsing="false" onAction="#setDeleteButton" prefHeight="26.0" prefWidth="294.0" text="Delete" textFill="#cc2727">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Button>
+      <Label layoutX="846.0" layoutY="576.0">
+         <font>
+            <Font name="Bauhaus 93" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="101.0" fitWidth="98.0" layoutX="31.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Users/user/OneDrive/Object%20Oriented%20Java/logo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="367.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sec Marker:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="fieldLecture2" layoutX="479.0" layoutY="518.0" prefHeight="26.0" prefWidth="174.0" />
+   </children>
+</AnchorPane>
