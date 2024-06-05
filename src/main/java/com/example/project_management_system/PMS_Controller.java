@@ -91,7 +91,7 @@ public class PMS_Controller {
             } else if (Log_in.equals("True") && userData[4].equals("admin")) {
                 LoadPage("/admin/homePage.fxml", event, actionEvent);
             } else if (Log_in.equals("True") && userData[4].equals("projectmanager")) {
-                LoadPage("/project_manager/ProjectManagerHomePage.fxml", event, actionEvent);
+                LoadPage("/project_manager/ProjectManagerProfile.fxml", event, actionEvent);
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText((String)null);
