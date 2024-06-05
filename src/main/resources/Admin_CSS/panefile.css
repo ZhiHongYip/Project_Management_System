@@ -1,0 +1,46 @@
+.root {
+    -fx-background-color: #faf0ca;
+}
+
+/* TableView */
+.table-view {
+    -fx-background-color: #f4d35e;
+}
+
+.table-row-cell {
+    -fx-background-color: #f4d35e;
+    -fx-text-fill: #051923;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f95738;
+}
+
+.button {
+    -fx-background-color: #ee964b;
+    -fx-text-fill: #051923;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16;
+}
+
+.button:hover {
+    -fx-background-color: #0d3b66;
+    -fx-text-fill: #faf0ca;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: #ee964b;
+    -fx-text-fill: #051923;
+    -fx-border-color: #ee964b;
+}
+
+.combo-box:hover {
+    -fx-background-color: #ee964b;
+    -fx-text-fill: #051923;
+}
+
+.combo-box .arrow-button:hover {
+    -fx-background-color: #ee964b;
+}

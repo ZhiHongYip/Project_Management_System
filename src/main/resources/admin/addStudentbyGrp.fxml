@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../Admin_CSS/panefile.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.addStudentbyGrp">
+   <children>
+      <Text layoutX="29.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Student By Group">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <TableView fx:id="addStudentByGrpTableView" layoutX="30.0" layoutY="106.0" prefHeight="278.0" prefWidth="540.0">
+        <columns>
+          <TableColumn fx:id="studentIDClm" prefWidth="130.0" text="ID" />
+          <TableColumn fx:id="studentNameClm" prefWidth="130.0" text="Name" />
+            <TableColumn fx:id="intakeCodeClm" prefWidth="140.0" text="Intake Code" />
+            <TableColumn fx:id="emailClm" prefWidth="140.0" text="Email" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="selectStudentIntakeCombo" layoutX="28.0" layoutY="60.0" prefWidth="150.0" promptText="Select an Intake :" />
+      <Button fx:id="addByIntake" layoutX="524.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleAddByIntake" prefHeight="26.0" prefWidth="46.0" text="Add" />
+   </children>
+</AnchorPane>

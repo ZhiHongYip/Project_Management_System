@@ -1,3 +1,7 @@
-StudentID, Name, Email, Intake
-1,Soo Chen Kang,sck@mail.apu.edu.my,UCDF2107ICT
-5,John Doe, jd@mail.apu.edu.my,1234,UCDF2107DI
+9,Carmen,car123gmail.com,car1,Tp2222
+301,Samantha Jones,samantha.j@example.com,UCDF2107BIT,samantha_pass_123
+302,Michael Williams,michael.w@example.com,UCDF2107BIT,michael_secret_456
+303,Emma Davis,emma.d@example.com,UCDF2107BIT,emma_pwd_789
+304,James Johnson,james.j@example.com,UCDF2107ICT(DI),james_password_321
+305,Olivia Brown,olivia.b@example.com,UCDF2107BIT,olivia_pass_654
+306,William Anderson,william.a@example.com,UCDF2107BIT,william_secret_987
