@@ -13,7 +13,6 @@ public class PMS_Application extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PMS_Application.class.getResource("PMS_LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-//        scene.getStylesheets().add(getClass().getResource("admin.css").toExternalForm());
         String imagePath = String.valueOf(getClass().getResource("/lecturer/Icon/logo.png"));
         Image icon = new Image(imagePath);
         stage.getIcons().add(icon);
