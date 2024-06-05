@@ -89,7 +89,7 @@ public class PMS_Controller {
                 lecturerID = userData[0];
                 LoadPage(path, event, actionEvent);
             } else if (Log_in.equals("True") && userData[4].equals("admin")) {
-                LoadPage("/admin/AdminHomePage.fxml", event, actionEvent);
+                LoadPage("/admin/homePage.fxml", event, actionEvent);
             } else if (Log_in.equals("True") && userData[4].equals("projectmanager")) {
                 LoadPage("/project_manager/ProjectManagerHomePage.fxml", event, actionEvent);
             } else {

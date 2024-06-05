@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.addIntakeController">
+   <children>
+      <TextField fx:id="intakeCodeTextfield" layoutX="174.0" layoutY="139.0" />
+      <Text layoutX="63.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Intake">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="96.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intake Code :" />
+      <Button fx:id="addIntakeBtn" layoutX="418.0" layoutY="138.0" mnemonicParsing="false" onAction="#addIntakeCode" prefHeight="26.0" prefWidth="123.0" text="Add Intake" />
+      <TableView fx:id="intakeTableView" layoutX="205.0" layoutY="267.0" prefHeight="272.0" prefWidth="284.0">
+        <columns>
+          <TableColumn fx:id="intakeCodeClm" prefWidth="282.3999557495117" text="Intake Code" />
+        </columns>
+      </TableView>
+      <Label fx:id="intakeCodeLabel" layoutX="174.0" layoutY="171.0" text="Intake Code is required" textFill="RED" visible="false" />
+      <Button fx:id="DeleteIntakeBtn" layoutX="571.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleDelete" text="Delete Intake" />
+   </children>
+</AnchorPane>

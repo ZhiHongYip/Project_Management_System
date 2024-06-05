@@ -1,4 +1,2 @@
-LecturerID, Name, Email
-2,Yip Zhi Hong,ych@mail.apu.edu.my
-6,Yong,y@mail.apu.edu.my
-102,y,y
+LecturerID, Name, Email, Password
+5,SooooooCK,ck123@gmail.com,ckck

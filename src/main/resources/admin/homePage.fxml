@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../Admin_CSS/panefile.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.AdminHomePageController">
+   <children>
+      <BorderPane prefHeight="500.0" prefWidth="800.0">
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="600.0" prefWidth="202.0" style="-fx-background-color: #0d3b66;">
+                     <children>
+                        <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#goToAdminHomePage" prefHeight="53.0" prefWidth="202.0" style="-fx-background-color: #0d3b66; -fx-border-color: #D3D3D3; -fx-border-width: 0px 0px 1px;" text="Home" textAlignment="CENTER" textFill="#faf0ca">
+                           <font>
+                              <Font name="Times New Roman Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="studentRegistrationBtn" mnemonicParsing="false" onAction="#goToStudentRegis" prefHeight="53.0" prefWidth="265.0" style="-fx-background-color: #0d3b66; -fx-border-color: #D3D3D3; -fx-border-width: 0px 0px 1px;" text="Student Registration" textAlignment="CENTER" textFill="#faf0ca">
+                           <font>
+                              <Font name="Times New Roman Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="lecturerRegistrationBtn" layoutX="10.0" layoutY="64.0" mnemonicParsing="false" onAction="#goToLecturerRegis" prefHeight="53.0" prefWidth="265.0" style="-fx-background-color: #0d3b66; -fx-border-color: #D3D3D3; -fx-border-width: 0px 0px 1px;" text="Lecturer Registration" textAlignment="CENTER" textFill="#faf0ca">
+                           <font>
+                              <Font name="Times New Roman Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="userInformationBtn" mnemonicParsing="false" onAction="#goToAUserInfo" prefHeight="53.0" prefWidth="249.0" style="-fx-background-color: #0d3b66; -fx-border-color: #D3D3D3; -fx-border-width: 0px 0px 1px;" text="User Information" textAlignment="CENTER" textFill="#faf0ca">
+                           <font>
+                              <Font name="Times New Roman Bold" size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="addIntake" layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#goToAddIntake" prefHeight="53.0" prefWidth="249.0" style="-fx-background-color: #0d3b66; -fx-border-color: #D3D3D3; -fx-border-width: 0px 0px 1px;" text="Add Intake" textAlignment="CENTER" textFill="#faf0ca">
+                           <font>
+                              <Font name="Times New Roman Bold" size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#signOut" prefHeight="53.0" prefWidth="316.0" style="-fx-background-color: #0d3b66; -fx-border-color: #D3D3D3; -fx-border-width: 0px 0px 1px;" text="Logout" textAlignment="CENTER" textFill="#faf0ca">
+                           <font>
+                              <Font name="Times New Roman Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane fx:id="stackPane" prefHeight="600.0" prefWidth="693.0" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

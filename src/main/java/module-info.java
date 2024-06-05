@@ -20,4 +20,5 @@ module com.example.project_management_system {
     exports lecturer;
     exports student;
     exports admin;
+    opens admin to javafx.fxml;
 }
