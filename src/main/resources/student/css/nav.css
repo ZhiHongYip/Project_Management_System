@@ -1,0 +1,9 @@
+.button:hover {
+    -fx-background-color: #03a9f4;
+    -fx-text-fill: white;
+}
+
+.active-button {
+    -fx-background-color: #ffc045;
+    -fx-text-fill: pink;
+    }

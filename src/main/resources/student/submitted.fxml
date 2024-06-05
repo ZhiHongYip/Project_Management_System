@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.SubmittedController">
+   <children>
+      <Label layoutX="439.0" layoutY="14.0" text="Submitted">
+         <font>
+            <Font name="Bookman Old Style" size="20.0" />
+         </font></Label>
+      <TableView fx:id="submittedTableView" layoutX="10.0" layoutY="56.0" prefHeight="569.0" prefWidth="958.0">
+         <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="210.39995574951172" text="Name" />
+            <TableColumn fx:id="moodleLinkColumn" prefWidth="454.39996337890625" text="MoodleLink" />
+            <TableColumn fx:id="submissionDateColumn" prefWidth="159.199951171875" text="SubmissionDate" />
+            <TableColumn fx:id="gradeColumn" prefWidth="136.0" text="Grade" />
+         </columns>
+      </TableView>
+      <ImageView fx:id="editIcon" fitHeight="31.0" fitWidth="40.0" layoutX="76.0" layoutY="645.0" onMouseClicked="#handleEditIconClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon/edit.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="deleteicon" fitHeight="39.0" fitWidth="37.0" layoutX="122.0" layoutY="642.0" onMouseClicked="#handleDeleteIconClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon/delete.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="requestButton" layoutX="765.0" layoutY="648.0" mnemonicParsing="false" onAction="#requestPresentationDate" stylesheets="@css/button.css" text="Request Presentation Date" />
+   </children>
+   <stylesheets>
+      <URL value="@css/table.css" />
+      <URL value="@css/label.css" />
+      <URL value="@css/button.css" />
+      <URL value="@css/styles.css" />
+   </stylesheets>
+</Pane>

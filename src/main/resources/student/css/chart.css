@@ -1,0 +1,15 @@
+.chart-pie .chart-legend {
+    -fx-padding: 10px;
+}
+
+.chart-pie .chart-legend-item {
+    -fx-font-size: 14px;
+}
+
+.chart-pie .chart-pie-label {
+    -fx-font-size: 12px;
+}
+
+.chart-pie {
+    border-radius: 50%;
+}

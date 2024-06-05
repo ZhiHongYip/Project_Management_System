@@ -1,3 +1,2 @@
 LecturerID, Name, Email, Password
 5,SooooooCK,ck123@gmail.com,ckck
-g,g,g,g
