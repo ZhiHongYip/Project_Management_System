@@ -94,11 +94,11 @@ public class ProjectManagerReportController extends Application {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 13) { // Assuming each line has all 13 attributes
+                if (parts.length == 12) { // Assuming each line has all 13 attributes
                     tableView.getItems().add(new ProjectData3(
                             parts[0], parts[1], parts[2], parts[3], parts[4],
                             parts[5], parts[6], parts[7], parts[8], parts[9],
-                            parts[10], parts[11], parts[12]));
+                            parts[10], parts[11]));
                 } else {
                     // Handle invalid lines if necessary
                     System.out.println("Invalid line in report.txt: " + line);

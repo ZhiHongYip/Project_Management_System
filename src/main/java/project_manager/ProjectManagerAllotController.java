@@ -3,6 +3,8 @@ package project_manager;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+
+import com.example.project_management_system.PMS_Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lecturer.ReportController;
 
 public class ProjectManagerAllotController implements Initializable {
 
@@ -94,10 +97,11 @@ public class ProjectManagerAllotController implements Initializable {
         initializeProjectTable();
         loadStudentData();
         loadAssessmentData();
-        ObservableList<String> intakeOptions = FXCollections.observableArrayList(
-                "UCDF2101", "UCDF2102", "UCDF2103", "UCDF2104", "UCDF2105"
-        );
-        choiceboxIntake.setItems(intakeOptions);
+        this.comboBox();
+//        ObservableList<String> intakeOptions = FXCollections.observableArrayList(
+//                "UCDF2101", "UCDF2102", "UCDF2103", "UCDF2104", "UCDF2105"
+//        );
+//        choiceboxIntake.setItems(intakeOptions);
 
         table1.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -183,7 +187,11 @@ public class ProjectManagerAllotController implements Initializable {
     }
 
     @FXML
-    public void handleButtonAllot(ActionEvent event) {
+    public void handleButtonAllot(ActionEvent event) throws IOException {
+        ArrayList<String> oldContent2 = new ArrayList<>();
+        ArrayList<String> oldContent = new ArrayList<>();
+        String line3 = null;
+        String line2 = null;
         String studentId = fieldStudentID.getText();
         String studentName = fieldStudentName.getText();
         String studentIntake = fieldStudentIntake.getText();
@@ -236,13 +244,41 @@ public class ProjectManagerAllotController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            BufferedReader reader2 = new BufferedReader(new FileReader("src/main/resources/database/student.txt"));
+            while ((line2= reader2.readLine())!= null){
+                String[] info2 = line2.split(",");
+                if (info2[0].equals(fieldStudentID.getText())) {
+                    System.out.println("Student found in student.txt");
+                    info2[4] = ShowSupervisor.getText();
+                }
+                StringBuilder sb2 = new StringBuilder();
+                sb2.append(info2[0]).append(",");
+                sb2.append(info2[1]).append(",");
+                sb2.append(info2[2]).append(",");
+                sb2.append(info2[3]).append(",");
+                sb2.append(info2[4]).append(",");
+                sb2.append(info2[5]);
+
+                oldContent2.add(String.valueOf(sb2));
+                System.out.println("oldContent2: "+oldContent2);
+            }
+
+            File file = new File("src/main/resources/database/student.txt");
+            FileWriter writer = new FileWriter(file);
+            BufferedWriter br = new BufferedWriter(writer);
+            for (String s : oldContent2) {
+                br.write(s);
+                br.newLine();
+            }
+            br.close();
         }
     }
 
     //
 
     @FXML
-    public void handleButtonGroup(ActionEvent event) {
+    public void handleButtonGroup(ActionEvent event) throws IOException {
         String selectedIntakeCode = choiceboxIntake.getValue();
 
         if (selectedIntakeCode == null) {
@@ -258,7 +294,11 @@ public class ProjectManagerAllotController implements Initializable {
         groupAllot(selectedIntakeCode);
     }
 
-    private void groupAllot(String selectedIntakeCode) {
+    private void groupAllot(String selectedIntakeCode) throws IOException {
+        ArrayList<String> oldContent2 = new ArrayList<>();
+        ArrayList<String> oldContent = new ArrayList<>();
+        String line3 = null;
+        String line2 = null;
         for (StudentData student : studentData) {
             if (student.getIntake().equals(selectedIntakeCode)) {
 
@@ -314,6 +354,34 @@ public class ProjectManagerAllotController implements Initializable {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
+                    BufferedReader reader2 = new BufferedReader(new FileReader("src/main/resources/database/student.txt"));
+                    while ((line2= reader2.readLine())!= null){
+                        String[] info2 = line2.split(",");
+                        if (info2[0].equals(student.getStudentId())) {
+                            System.out.println("Student found in student.txt");
+                            info2[4] = ShowSupervisor.getText();
+                        }
+                        StringBuilder sb2 = new StringBuilder();
+                        sb2.append(info2[0]).append(",");
+                        sb2.append(info2[1]).append(",");
+                        sb2.append(info2[2]).append(",");
+                        sb2.append(info2[3]).append(",");
+                        sb2.append(info2[4]).append(",");
+                        sb2.append(info2[5]);
+
+                        oldContent2.add(String.valueOf(sb2));
+                        System.out.println("oldContent2: "+oldContent2);
+                    }
+
+                    File file = new File("src/main/resources/database/student.txt");
+                    FileWriter writer = new FileWriter(file);
+                    BufferedWriter br = new BufferedWriter(writer);
+                    for (String s : oldContent2) {
+                        br.write(s);
+                        br.newLine();
+                    }
+                    br.close();
                 }
             }
         }
@@ -416,6 +484,20 @@ public class ProjectManagerAllotController implements Initializable {
 
         // 恢复表格显示原始的学生数据
         loadStudentData();
+    }
+
+    public void comboBox(){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/intakeCode.txt"));
+            ArrayList<String> roomType = new ArrayList<String>();
+            String line = null;
+            while((line = reader.readLine()) != null){
+                this.choiceboxIntake.getItems().add(line);
+            }
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+        this.choiceboxIntake.setValue("Any");
     }
 }
 

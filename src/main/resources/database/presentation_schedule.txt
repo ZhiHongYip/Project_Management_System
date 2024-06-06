@@ -1,2 +1,7 @@
 PresentationID,StudentID,AssessmentType,Intake,ReportID,Date,Slot,LecturerID(Supervisor),approval,LecturerID(Second Marker),approval,Status
-1,TP065578,Capstone Project-P1,UCDF2107ICT,1,2024-06-07,10:00AM,LC000302,Pending,LC065307,Pending,Rejected
+1,TP065578,Capstone Project-P1,UCDF2107ICT,1,2024-06-08,10:00AM,LC000302,Pending,LC065307,Pending,Pending
+2,TP065578,FYP,UCDF2107ICT,2,2024-06-07,11:00AM,LC065307,Pending,LC000010,Pending,Pending
+3,TP000002,Investigation Report,UCDF2107ICT(DI),3,2024-06-09,5:00PM,LC065307,Pending,LC000010,Pending,Pending
+4,TP000003,Investigation Report,UCDF2107ICT(SE),4,2024-06-07,1:00PM,LC065307,Pending,LC000010,Pending,Pending
+5,TP000004,FYP,UCDF2107ICT(DI),5,2024-06-08,8:00AM,LC065307,Pending,LC000010,Pending,Pending
+6,TP000013,Internship,UCDF2107ICT(DI),6,2024-06-09,1:00PM,LC000010,Pending,LC065307,Pending,Pending

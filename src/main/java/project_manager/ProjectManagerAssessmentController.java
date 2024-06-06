@@ -57,12 +57,13 @@ public class ProjectManagerAssessmentController implements Initializable {
     private TextField fieldDescription;
     @FXML
     private ChoiceBox<String> fieldIntake;
-    private String[] intake = {"UCDF2107ICT", "UCDF2107ICT(SE)", "UCDF2107ICT(DI)", "UCDF2309ICT(SE)", "UCDF2309ICT(DI)"};
     @FXML
     private ChoiceBox<String> fieldLecture;
     private ObservableList<String> lectureOptions = FXCollections.observableArrayList();
     @FXML
     private ChoiceBox<String> fieldLecture2;
+
+    private ObservableList<String> intakeOption = FXCollections.observableArrayList();
     private ObservableList<String> lectureOptions2 = FXCollections.observableArrayList();
     @FXML
     private ChoiceBox<String> fieldTypes;
@@ -80,12 +81,15 @@ public class ProjectManagerAssessmentController implements Initializable {
         dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
 
         Types.setCellFactory(tc -> new ChoiceBoxTableCell<>(FXCollections.observableArrayList(types)));
-        Intake.setCellFactory(tc -> new ChoiceBoxTableCell<>(FXCollections.observableArrayList(intake)));
+        Intake.setCellFactory(tc -> new ChoiceBoxTableCell<>(intakeOption));
         Lecture.setCellFactory(tc -> new ChoiceBoxTableCell<>(lectureOptions2));
         Marker.setCellFactory(tc -> new ChoiceBoxTableCell<>(lectureOptions));
 
+
         fieldTypes.getItems().addAll(types);
-        fieldIntake.getItems().addAll(intake);
+
+        readIntakeFromFile();
+        fieldIntake.getItems().addAll(intakeOption);
 
         readLectureOptionsFromFile();
         fieldLecture.setItems(lectureOptions);
@@ -97,6 +101,7 @@ public class ProjectManagerAssessmentController implements Initializable {
     }
 
     private void readLectureOptionsFromFile() {
+        this.lectureOptions2.add("");
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/lecturer.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -151,8 +156,8 @@ public class ProjectManagerAssessmentController implements Initializable {
             String description = fieldDescription.getText();
             String intake = fieldIntake.getValue();
             String types = fieldTypes.getValue();
-            String lecture = fieldLecture2.getValue();
-            String marker = fieldLecture.getValue();
+            String lecture = fieldLecture.getValue();
+            String marker = fieldLecture2.getValue();
 
             LocalDate selectedDate = selectDate.getValue();
 
@@ -294,5 +299,20 @@ public class ProjectManagerAssessmentController implements Initializable {
     public void handleClear(ActionEvent event) {
         fieldProjectName.clear();
         fieldDescription.clear();
+    }
+
+    private void readIntakeFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/intakeCode.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length >= 1) {
+                    String Intake = parts[0].trim();
+                    intakeOption.add(Intake);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

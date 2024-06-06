@@ -1,1 +1,9 @@
 1,Java,OODJ concept,Capstone Project-P1,UCDF2107ICT,LC000302,LC065307,2024-09-04,TP065578,Soo Chen Kang1,individual
+1,Java,OODJ concept,Capstone Project-P1,UCDF2107ICT,LC000302,LC065307,2024-09-04,TP000005,David Wilson,individual
+6,Digital Forensic,Security,Investigation Report,UCDF2107ICT(DI),LC065307,LC000010,2024-08-14,TP000002,Emily Johnson,individual
+6,Digital Forensic,Security,Investigation Report,UCDF2107ICT(SE),LC065307,LC000010,2024-08-14,TP000003,Michael Davis,individual
+4,Final Year Project,FYP,FYP,UCDF2107ICT(DI),LC065307,LC000010,2024-10-09,TP000004,Sarah Brown,individual
+4,Final Year Project,FYP,FYP,UCDF2309ICT(DI),LC065307,LC000010,2024-10-09,TP000012,Charlie Davis,individual
+4,Final Year Project,FYP,FYP,UCDF2107ICT,LC065307,LC000010,2024-10-09,TP065578,Soo Chen Kang1,individual
+6,Digital Forensic,Security,Investigation Report,UCDF2107ICT,LC065307,LC000010,2024-08-14,TP065578,Soo Chen Kang1,individual
+7,Power Ranger,Cosplay,Internship,UCDF2107ICT(DI),LC000010,LC065307,2024-09-11,TP000013,Eve White,individual

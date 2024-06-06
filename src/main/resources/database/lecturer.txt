@@ -1,2 +1,6 @@
 LC065307,Yip Zhi Hong,yzh@mail.apu.edu.my,1234
 LC000302,Michael Williams,michael.w@example.com,defaultPassword
+LC000010,Ivy Young,ivy.young@example.com,welcome1
+LC000009,Henry Walker,henry.walker@example.com,password!
+LC000008,Grace Lee,grace.lee@example.com,admin2021
+LC000006,Emily Wilson,emily.wilson@example.com,secure123

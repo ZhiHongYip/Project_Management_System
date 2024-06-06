@@ -61,7 +61,6 @@ public class Dashboard {
 
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/database/FinalStudent_Assessment.txt"))) {
             String line;
-            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 10) {
@@ -70,7 +69,7 @@ public class Dashboard {
                     String studentID = parts[8].trim();
                     if (intake.equals(userIntake) && studentID.equals(currentUserID)) {
                         String name = parts[1].trim();
-                        LocalDate dueDate = LocalDate.parse(parts[7].trim(), DateTimeFormatter.ofPattern("d/M/yyyy"));
+                        LocalDate dueDate = LocalDate.parse(parts[7].trim(),  DateTimeFormatter.ISO_DATE);
                         Assessment assessment = new Assessment(id, name, dueDate);
                         if (!isAssessmentSubmitted(id, userIntake, currentUserID)) {
                             remainingAssessments.add(assessment);
@@ -125,7 +124,6 @@ public class Dashboard {
 
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/database/FinalStudent_Assessment.txt"))) {
             String line;
-            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 10) {

@@ -18,7 +18,7 @@ public class ProjectData3 {
     private StringProperty secondMarkerID;
 
     // Constructor with 13 parameters
-    public ProjectData3(String reportID, String name, String studentID, String intake, String assessmentID, String moodleLink, String submissionDate, String grade, String status, String feedback, String supervisorID, String secondMarkerID, String part) {
+    public ProjectData3(String reportID, String name, String studentID, String intake, String assessmentID, String moodleLink, String submissionDate, String grade, String status, String feedback, String supervisorID, String secondMarkerID) {
         this.reportID = new SimpleStringProperty(reportID);
         this.name = new SimpleStringProperty(name);
         this.studentID = new SimpleStringProperty(studentID);

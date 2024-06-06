@@ -210,7 +210,7 @@ public class ReportController extends CellTable implements Initializable  {
                     BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                     while ((line1 = reader1.readLine()) != null) {
                         String[] report = line1.split(",");
-                        if (report[2].equals(studentID) && (report[10].equals(PMS_Controller.lecturerID) ||(report[11].equals(PMS_Controller.lecturerID)))) {
+                        if (report[2].equals(studentID) && (report[10].equals(PMS_Controller.lecturerID))) {
                             studentName = info[1];
                             if(this.Graded.isSelected()){
                                 this.addGraded(report);
@@ -234,7 +234,7 @@ public class ReportController extends CellTable implements Initializable  {
                     BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                     while ((line1 = reader1.readLine()) != null) {
                         String[] report = line1.split(",");
-                        if (report[3].equals(intake) && (report[10].equals(PMS_Controller.lecturerID) ||(report[11].equals(PMS_Controller.lecturerID)))) {
+                        if (report[3].equals(intake) && (report[10].equals(PMS_Controller.lecturerID))) {
                             studentName = info[1];
                             if(this.Graded.isSelected()){
                                 this.addGraded(report);
@@ -261,7 +261,7 @@ public class ReportController extends CellTable implements Initializable  {
                         BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                         while ((line1 = reader1.readLine()) != null) {
                             String[] report = line1.split(",");
-                            if (report[4].equals(assessmentID) && (report[10].equals(PMS_Controller.lecturerID) ||(report[11].equals(PMS_Controller.lecturerID)))) {
+                            if (report[4].equals(assessmentID) && (report[10].equals(PMS_Controller.lecturerID))) {
                                 System.out.println(Arrays.toString(report));
                                 BufferedReader reader4 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                                 while ((line = reader4.readLine()) != null) {
@@ -295,7 +295,7 @@ public class ReportController extends CellTable implements Initializable  {
                     BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                     while ((line1 = reader1.readLine()) != null) {
                         String[] report = line1.split(",");
-                        if (report[2].equals(studentID) && report[3].equals(intake) && (report[10].equals(PMS_Controller.lecturerID) ||(report[11].equals(PMS_Controller.lecturerID)))) {
+                        if (report[2].equals(studentID) && report[3].equals(intake) && (report[10].equals(PMS_Controller.lecturerID))) {
                             studentName = info[1];
                             if(this.Graded.isSelected()){
                                 this.addGraded(report);
@@ -331,7 +331,7 @@ public class ReportController extends CellTable implements Initializable  {
                             while ((line1 = reader1.readLine()) != null) {
                                 String[] report = line1.split(",");
                                 System.out.println(Arrays.toString(report));
-                                if (report[4].equals(assessmentID) && report[2].equals(studentID) && (report[10].equals(PMS_Controller.lecturerID) ||(report[11].equals(PMS_Controller.lecturerID)))) {
+                                if (report[4].equals(assessmentID) && report[2].equals(studentID) && (report[10].equals(PMS_Controller.lecturerID))) {
                                     studentName = info2[1];
                                     if(this.Graded.isSelected()){
                                         this.addGraded(report);
@@ -368,7 +368,7 @@ public class ReportController extends CellTable implements Initializable  {
                         BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                         while ((line1 = reader1.readLine()) != null) {
                             String[] report = line1.split(",");
-                            if (report[4].equals(assessmentID) && report[3].equals(intake) && (report[10].equals(PMS_Controller.lecturerID) ||(report[11].equals(PMS_Controller.lecturerID)))) {
+                            if (report[4].equals(assessmentID) && report[3].equals(intake) && (report[10].equals(PMS_Controller.lecturerID))) {
                                 studentName = info2[1];
                                 if (!printedAssessmentTypes.contains(assessmentID)) {
                                     System.out.println("AssessmentID: " + assessmentID);
@@ -406,7 +406,7 @@ public class ReportController extends CellTable implements Initializable  {
                         BufferedReader reader1 = new BufferedReader(new FileReader("src/main/resources/database/report.txt"));
                         while ((line1 = reader1.readLine()) != null) {
                             String[] report = line1.split(",");
-                            if (report[4].equals(assessmentID) && report[3].equals(intake) && report[2].equals(studentID) && (report[10].equals(PMS_Controller.lecturerID) ||(report[11].equals(PMS_Controller.lecturerID)))) {
+                            if (report[4].equals(assessmentID) && report[3].equals(intake) && report[2].equals(studentID) && (report[10].equals(PMS_Controller.lecturerID))) {
                                 studentName = info2[2];
                                 if(this.Graded.isSelected()){
                                     this.addGraded(report);
@@ -431,7 +431,7 @@ public class ReportController extends CellTable implements Initializable  {
                     String[] report = line1.split(",");
                     System.out.println(Arrays.toString(report));
                     System.out.println(PMS_Controller.lecturerID);
-                    if (report[2].equals(studentID) && (report[10].equals(PMS_Controller.lecturerID) ||(report[11].equals(PMS_Controller.lecturerID)))) {
+                    if (report[2].equals(studentID) && (report[10].equals(PMS_Controller.lecturerID))) {
                         System.out.println("Linking");
                         studentName = info[1];
                         if(this.Graded.isSelected()){

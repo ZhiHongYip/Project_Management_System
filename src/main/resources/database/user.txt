@@ -11,3 +11,14 @@ TP000005,David Wilson,david.w@example.com,!P4ssw0rd,student
 TP000006,Jennifer Lee,jennifer.lee@example.com,7gH*2uPq,student
 TP000007,Kevin Martinez1,kevin.martinez@example.com,tR9@xY5z,student
 LC000302,Michael Williams,michael.w@example.com,defaultPassword,lecturer
+TP000008,John Doe,john.doe@example.com,Password123,student
+TP000009,Jane Smith,jane.smith@example.com,SecurePass456,student
+TP000010,Alice Johnson,alice.johnson@example.com,MyPassword789,student
+TP000011,Bob Brown,bob.brown@example.com,Passw0rd!,student
+TP000012,Charlie Davis,charlie.davis@example.com,P@ssw0rd!,student
+TP000013,Eve White,eve.white@example.com,EveSecret123,student
+LC000010,Ivy Young,ivy.young@example.com,welcome1,lecturer
+LC000009,Henry Walker,henry.walker@example.com,password!,lecturer
+LC000008,Grace Lee,grace.lee@example.com,admin2021,lecturer
+LC000006,Emily Wilson,emily.wilson@example.com,secure123,lecturer
+LC000005,Charlie Davis,charlie.davis@example.com,passw0rd,projectmanager
