@@ -188,91 +188,103 @@ public class ProjectManagerAllotController implements Initializable {
 
     @FXML
     public void handleButtonAllot(ActionEvent event) throws IOException {
-        ArrayList<String> oldContent2 = new ArrayList<>();
-        ArrayList<String> oldContent = new ArrayList<>();
-        String line3 = null;
-        String line2 = null;
-        String studentId = fieldStudentID.getText();
-        String studentName = fieldStudentName.getText();
-        String studentIntake = fieldStudentIntake.getText();
+        if (fieldStudentID.getText().isEmpty()||fieldStudentName.getText().isEmpty()||
+                ShowAssID.getText().isEmpty()||ShowAssName.getText().isEmpty()||ShowDescription.getText().isEmpty()||
+                ShowType.getText().isEmpty()||fieldStudentIntake.getText().isEmpty()||ShowSupervisor.getText().isEmpty()||
+                ShowSecMarker.getText().isEmpty()||dueDateTextField.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill up!");
+            alert.showAndWait();
+        }else {
+            ArrayList<String> oldContent2 = new ArrayList<>();
+            ArrayList<String> oldContent = new ArrayList<>();
+            String line3 = null;
+            String line2 = null;
+            String studentId = fieldStudentID.getText();
+            String studentName = fieldStudentName.getText();
+            String studentIntake = fieldStudentIntake.getText();
 
-        String assId = ShowAssID.getText();
-        String assName = ShowAssName.getText();
-        String description = ShowDescription.getText();
-        String type = ShowType.getText();
-        String intake = fieldStudentIntake.getText();
-        String supervisor = ShowSupervisor.getText();
-        String secondmarker = ShowSecMarker.getText();
-        String dueDate = dueDateTextField.getText();
+            String assId = ShowAssID.getText();
+            String assName = ShowAssName.getText();
+            String description = ShowDescription.getText();
+            String type = ShowType.getText();
+            String intake = fieldStudentIntake.getText();
+            String supervisor = ShowSupervisor.getText();
+            String secondmarker = ShowSecMarker.getText();
+            String dueDate = dueDateTextField.getText();
 
-        String line = assId + "," + assName + "," + description + "," + type + "," + intake + "," +
-                supervisor + "," + secondmarker + "," + dueDate + "," + studentId + "," +
-                studentName + ",individual";
+            String line = assId + "," + assName + "," + description + "," + type + "," + intake + "," +
+                    supervisor + "," + secondmarker + "," + dueDate + "," + studentId + "," +
+                    studentName + ",individual";
 
-        if (isDuplicateAssignment(assId, studentId, "individual")) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setTitle("Error");
-            errorAlert.setHeaderText(null);
-            errorAlert.setContentText("This assignment has already been allocated to this student.");
-            errorAlert.showAndWait();
-            return;
-        }
-
-        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmAlert.setTitle("Confirmation");
-        confirmAlert.setHeaderText(null);
-        confirmAlert.setContentText("Are you sure you want to allot this assessment?");
-        ButtonType confirmButtonType = new ButtonType("Yes");
-        ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        confirmAlert.getButtonTypes().setAll(confirmButtonType, cancelButtonType);
-        Optional<ButtonType> result = confirmAlert.showAndWait();
-
-        if (result.isPresent() && result.get() == confirmButtonType) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FINAL_ASSESSMENT_FILE_PATH, true))) {
-                writer.write(line);
-                writer.newLine();
-
-                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Success");
-                successAlert.setHeaderText(null);
-                successAlert.setContentText("Data has been successfully written to the file.");
-                successAlert.showAndWait();
-
-                // Update the student's status in the table
-                updateStudentStatus(studentId, "have");
-                table1.refresh();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (isDuplicateAssignment(assId, studentId, "individual")) {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Error");
+                errorAlert.setHeaderText(null);
+                errorAlert.setContentText("This assignment has already been allocated to this student.");
+                errorAlert.showAndWait();
+                return;
             }
 
-            BufferedReader reader2 = new BufferedReader(new FileReader("src/main/resources/database/student.txt"));
-            while ((line2= reader2.readLine())!= null){
-                String[] info2 = line2.split(",");
-                if (info2[0].equals(fieldStudentID.getText())) {
-                    System.out.println("Student found in student.txt");
-                    info2[4] = ShowSupervisor.getText();
+            Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmAlert.setTitle("Confirmation");
+            confirmAlert.setHeaderText(null);
+            confirmAlert.setContentText("Are you sure you want to allot this assessment?");
+            ButtonType confirmButtonType = new ButtonType("Yes");
+            ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            confirmAlert.getButtonTypes().setAll(confirmButtonType, cancelButtonType);
+            Optional<ButtonType> result = confirmAlert.showAndWait();
+
+            if (result.isPresent() && result.get() == confirmButtonType) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(FINAL_ASSESSMENT_FILE_PATH, true))) {
+                    writer.write(line);
+                    writer.newLine();
+
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Success");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Data has been successfully written to the file.");
+                    successAlert.showAndWait();
+
+                    // Update the student's status in the table
+                    updateStudentStatus(studentId, "have");
+                    table1.refresh();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                StringBuilder sb2 = new StringBuilder();
-                sb2.append(info2[0]).append(",");
-                sb2.append(info2[1]).append(",");
-                sb2.append(info2[2]).append(",");
-                sb2.append(info2[3]).append(",");
-                sb2.append(info2[4]).append(",");
-                sb2.append(info2[5]);
 
-                oldContent2.add(String.valueOf(sb2));
-                System.out.println("oldContent2: "+oldContent2);
-            }
+                BufferedReader reader2 = new BufferedReader(new FileReader("src/main/resources/database/student.txt"));
+                while ((line2= reader2.readLine())!= null){
+                    String[] info2 = line2.split(",");
+                    if (info2[0].equals(fieldStudentID.getText())) {
+                        System.out.println("Student found in student.txt");
+                        info2[4] = ShowSupervisor.getText();
+                    }
+                    StringBuilder sb2 = new StringBuilder();
+                    sb2.append(info2[0]).append(",");
+                    sb2.append(info2[1]).append(",");
+                    sb2.append(info2[2]).append(",");
+                    sb2.append(info2[3]).append(",");
+                    sb2.append(info2[4]).append(",");
+                    sb2.append(info2[5]);
 
-            File file = new File("src/main/resources/database/student.txt");
-            FileWriter writer = new FileWriter(file);
-            BufferedWriter br = new BufferedWriter(writer);
-            for (String s : oldContent2) {
-                br.write(s);
-                br.newLine();
+                    oldContent2.add(String.valueOf(sb2));
+                    System.out.println("oldContent2: "+oldContent2);
+                }
+
+                File file = new File("src/main/resources/database/student.txt");
+                FileWriter writer = new FileWriter(file);
+                BufferedWriter br = new BufferedWriter(writer);
+                for (String s : oldContent2) {
+                    br.write(s);
+                    br.newLine();
+                }
+                br.close();
             }
-            br.close();
         }
+
     }
 
     //

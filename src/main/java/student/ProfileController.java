@@ -85,9 +85,9 @@ public class ProfileController {
                         setStyle("");
                     } else {
                         setText(item);
-                        if ("rejected".equalsIgnoreCase(item)) {
+                        if ("Reject".equalsIgnoreCase(item)) {
                             setTextFill(javafx.scene.paint.Color.RED);
-                        } else if ("approved".equalsIgnoreCase(item)) {
+                        } else if ("Approve".equalsIgnoreCase(item)) {
                             setTextFill(javafx.scene.paint.Color.GREEN);
                         } else {
                             setTextFill(javafx.scene.paint.Color.BLACK);

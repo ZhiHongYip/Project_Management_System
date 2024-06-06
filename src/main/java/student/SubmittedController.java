@@ -115,8 +115,6 @@ public class SubmittedController {
         List<SubmittedTable> data = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/report.txt"))) {
-            reader.readLine();
-
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println("Line Read: " + line);
@@ -290,14 +288,7 @@ public class SubmittedController {
     private static List<String> getStrings(int reportID, List<String> lines) {
         List<String> updatedLines = new ArrayList<>();
 
-        boolean isHeaderLine = true;
         for (String line : lines) {
-            if (isHeaderLine) {
-                updatedLines.add(line);
-                isHeaderLine = false;
-                continue;
-            }
-
             String[] parts = line.split(",");
             if (parts.length > 0) {
                 int lineReportID = Integer.parseInt(parts[0]);

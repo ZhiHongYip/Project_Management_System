@@ -60,26 +60,37 @@ public class lecturerRegistrationController {
     }
 
     @FXML
-    private void addLecturer(ActionEvent event) {
+    private void addLecturer(ActionEvent event) throws IOException {
         if (submitButtonClicked()) {
-            // Retrieve data from text fields
-            String id = lecturerID.getText();
-            String name = lecturerName.getText();
-            String email = lecturerEmail.getText();
-            String password = lecturerPassword.getText();
+            int exist = checkLecture(lecturerID.getText());
+            if (exist == 1){
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Lecture ID Has Been Taken!");
+                alert.showAndWait();
+            }else {
+                // Retrieve data from text fields
+                String id = lecturerID.getText();
+                String name = lecturerName.getText();
+                String email = lecturerEmail.getText();
+                String password = lecturerPassword.getText();
 
-            // Create a new Lecturer object
-            admin.lecturerTableView.Lecturer newLecturer = new admin.lecturerTableView.Lecturer(id, name, email);
+                // Create a new Lecturer object
+                admin.lecturerTableView.Lecturer newLecturer = new admin.lecturerTableView.Lecturer(id, name, email);
 
-            // Add the new Lecturer to the TableView
-            LecturerList.add(newLecturer);
+                // Add the new Lecturer to the TableView
+                LecturerList.add(newLecturer);
 
-            // Write lecturer information to file
-            writeLecturerToFile(newLecturer, password);
-            writeLecturerToUserFile(newLecturer, password);
+                // Write lecturer information to file
+                writeLecturerToFile(newLecturer, password);
+                writeLecturerToUserFile(newLecturer, password);
 
-            // Clear input fields after adding
-            clearFields();
+                // Clear input fields after adding
+                clearFields();
+            }
+
         }
     }
 
@@ -218,6 +229,19 @@ public class lecturerRegistrationController {
         }
     }
 
+    public int checkLecture(String checker)throws IOException{
+        int exist = 0;
+        String line = null;
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/lecturer.txt"));
+        while ((line = reader.readLine()) != null ) {
+            String[] info = line.split(",");
+            if (checker.equals(info[0])){
+                exist = 1;
+                break;
+            }
+        }
+        return exist;
+    }
 
     private void clearFields() {
         lecturerID.clear();

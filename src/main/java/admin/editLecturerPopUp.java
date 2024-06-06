@@ -133,46 +133,70 @@ public class editLecturerPopUp {
         }
     }
 
+    public int checkLecture(String checker)throws IOException{
+        int exist = 0;
+        String line = null;
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/lecturer.txt"));
+        while ((line = reader.readLine()) != null ) {
+            String[] info = line.split(",");
+            if (checker.equals(info[0])){
+                exist = 1;
+                break;
+            }
+        }
+        return exist;
+    }
+
     @FXML
-    private void callEditLecturerData() {
+    private void callEditLecturerData() throws IOException {
         if (!validateInputFields()) {
             return; // Exit if any field is invalid
-        }
+        }else {
+            int exist = checkLecture(LEditIDTextField.getText());
+            if (exist == 1) {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Lecture ID Has Been Taken!");
+                alert.showAndWait();
+            } else {
+                String lecturerFilePath = "src/main/resources/database/lecturer.txt";
+                String userFilePath = "src/main/resources/database/user.txt";
+                String id = LEditIDTextField.getText();
+                String name = LEditNameTextField.getText();
+                String email = LEditEmailTextField.getText();
+                String password = LEditPasswordTextField.getText();
+                String role = editLecturerRole.getValue();
 
-        String lecturerFilePath = "src/main/resources/database/lecturer.txt";
-        String userFilePath = "src/main/resources/database/user.txt";
-        String id = LEditIDTextField.getText();
-        String name = LEditNameTextField.getText();
-        String email = LEditEmailTextField.getText();
-        String password = LEditPasswordTextField.getText();
-        String role = editLecturerRole.getValue();
+                try {
+                    // Update the user data in user.txt
+                    editUserData(userFilePath, id, name, email, password, role);
+                    // Then, remove or add the lecturer's data from/to lecturer.txt
+                    editLecturerData(lecturerFilePath, userFilePath, id, name, email, password, role);
 
-        try {
-            // Update the user data in user.txt
-            editUserData(userFilePath, id, name, email, password, role);
-            // Then, remove or add the lecturer's data from/to lecturer.txt
-            editLecturerData(lecturerFilePath, userFilePath, id, name, email, password, role);
-
-            // Update the table view or perform any other necessary operations
-            if (AUserInfoTableView != null) {
-                ObservableList<AUserInfoTableView.User> observableList = AUserInfoTableView.getItems();
-                for (AUserInfoTableView.User userInfo : observableList) {
-                    if (userInfo.getId().equals(selectedUser.getId())) {
-                        userInfo.setName(name);
-                        userInfo.setEmail(email);
-                        userInfo.setRole(role);
+                    // Update the table view or perform any other necessary operations
+                    if (AUserInfoTableView != null) {
+                        ObservableList<AUserInfoTableView.User> observableList = AUserInfoTableView.getItems();
+                        for (AUserInfoTableView.User userInfo : observableList) {
+                            if (userInfo.getId().equals(selectedUser.getId())) {
+                                userInfo.setName(name);
+                                userInfo.setEmail(email);
+                                userInfo.setRole(role);
+                            }
+                        }
+                        AUserInfoTableView.setItems(observableList);
+                        AUserInfoTableView.refresh();
                     }
-                }
-                AUserInfoTableView.setItems(observableList);
-                AUserInfoTableView.refresh();
-            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                // Close the lecturer modify form
+                Stage stage = (Stage) LEditButton.getScene().getWindow();
+                stage.close();
+            }
         }
-        // Close the lecturer modify form
-        Stage stage = (Stage) LEditButton.getScene().getWindow();
-        stage.close();
     }
 
     public void setSelectedUser(AUserInfoTableView.User selectedUser) {

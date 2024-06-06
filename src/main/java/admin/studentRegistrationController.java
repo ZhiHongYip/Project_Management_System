@@ -81,18 +81,29 @@ public class studentRegistrationController {
     }
 
     @FXML
-    private void addStudent(ActionEvent event) {
+    private void addStudent(ActionEvent event) throws IOException {
         if (submitButtonClicked()) {
-            String id = studentID.getText();
-            String name = studentName.getText();
-            String email = studentEmail.getText();
-            String intake = intakeCombox.getValue();
-            String password = studentPassword.getText();
-            Student newStudent = new Student(id, name, email, intake);
-            studentList.add(newStudent);
-            writeStudentToFile(id, name, email, intake, password);
-            writeStudentToUserFile(id, name, email, intake, password);
-            clearFields();
+            int exist = checkStudent(studentID.getText());
+            if(exist == 1){
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Student ID Has Been Taken!");
+                alert.showAndWait();
+            }else {
+                String id = studentID.getText();
+                String name = studentName.getText();
+                String email = studentEmail.getText();
+                String intake = intakeCombox.getValue();
+                String password = studentPassword.getText();
+                Student newStudent = new Student(id, name, email, intake);
+                studentList.add(newStudent);
+                writeStudentToFile(id, name, email, intake, password);
+                writeStudentToUserFile(id, name, email, intake, password);
+                clearFields();
+            }
+
         }
     }
 
@@ -192,6 +203,21 @@ public class studentRegistrationController {
 //        studentIntake.clear();
         studentPassword.clear();
     }
+
+    public int checkStudent(String checker)throws IOException{
+        int exist = 0;
+        String line = null;
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/student.txt"));
+        while ((line = reader.readLine()) != null ) {
+            String[] info = line.split(",");
+            if (checker.equals(info[0])){
+                exist = 1;
+                break;
+            }
+        }
+        return exist;
+    }
+
 
     public static class Student {
         private String id;

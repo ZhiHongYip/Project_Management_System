@@ -85,27 +85,6 @@ public class Dashboard {
     }
 
 
-    private Set<String> getSubmittedAssessments(String userIntake, String currentUserID) {
-        Set<String> submittedAssessmentIDs = new HashSet<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/database/report.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] fields = line.split(",");
-                if (fields.length >= 12) {
-                    String assessmentID = fields[4].trim();
-                    String intake = fields[3].trim();
-                    String userID = fields[2].trim();
-                    if (intake.equals(userIntake) && userID.equals(currentUserID)) {
-                        submittedAssessmentIDs.add(assessmentID);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return submittedAssessmentIDs;
-    }
-
     private void startLiveUpdate(String userIntake, String currentUserID) {
         ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(() -> Platform.runLater(() -> refreshDashboard(userIntake, currentUserID)), 0, 30, TimeUnit.SECONDS);

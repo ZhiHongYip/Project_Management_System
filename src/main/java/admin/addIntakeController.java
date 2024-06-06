@@ -4,11 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.*;
@@ -47,22 +43,46 @@ public class addIntakeController {
     }
 
     @FXML
-    private void addIntakeCode(ActionEvent event) {
+    private void addIntakeCode(ActionEvent event) throws IOException {
         if (submitButtonClicked()) {
-            String intakeCode = intakeCodeTextfield.getText();
+            int exist = checkIntake(intakeCodeTextfield.getText());
+            if(exist == 1){
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Intake Code Has Been Taken!");
+                alert.showAndWait();
+            }else{
+                String intakeCode = intakeCodeTextfield.getText();
 
-            // Create a new Intake object
-            Intake newIntake = new Intake(intakeCode);
+                // Create a new Intake object
+                Intake newIntake = new Intake(intakeCode);
 
-            // Add the new intake to the TableView
-            intakeList.add(newIntake);
+                // Add the new intake to the TableView
+                intakeList.add(newIntake);
 
-            // Write intake code to file
-            writeIntakeToFile(intakeCode);
+                // Write intake code to file
+                writeIntakeToFile(intakeCode);
 
-            // Clear input field after adding
-            intakeCodeTextfield.clear();
+                // Clear input field after adding
+                intakeCodeTextfield.clear();
+            }
         }
+    }
+
+    public int checkIntake(String checker)throws IOException{
+        int exist = 0;
+        String line = null;
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/intakeCode.txt"));
+        while ((line = reader.readLine()) != null ) {
+            String[] info = line.split(",");
+            if (checker.equals(info[0])){
+                exist = 1;
+                break;
+            }
+        }
+        return exist;
     }
 
     private boolean submitButtonClicked() {

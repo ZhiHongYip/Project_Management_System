@@ -156,44 +156,68 @@ public class editStudentPopUp {
         return validated;
     }
 
+    public int checkStudent(String checker)throws IOException{
+        int exist = 0;
+        String line = null;
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/student.txt"));
+        while ((line = reader.readLine()) != null ) {
+            String[] info = line.split(",");
+            if (checker.equals(info[0])){
+                exist = 1;
+                break;
+            }
+        }
+        return exist;
+    }
+
     @FXML
-    private void callEditStudentData() {
+    private void callEditStudentData() throws IOException {
         if (!validateInputFields()) {
             return; // Exit if any field is invalid
-        }
+        } else {
+            int exist = checkStudent(SEditIDTextField.getText());
+            if(exist == 1){
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Student ID Has Been Taken!");
+                alert.showAndWait();
+            }else {
+                String studentFilePath = "src/main/resources/database/student.txt";
+                String userFilePath = "src/main/resources/database/user.txt";
+                String id = SEditIDTextField.getText();
+                String name = SEditNameTextField.getText();
+                String email = SEditEmailTextField.getText();
+                String intake = SEditIntakeCombo.getValue();
+                String password = SEditPasswordTextField.getText();
 
-        String studentFilePath = "src/main/resources/database/student.txt";
-        String userFilePath = "src/main/resources/database/user.txt";
-        String id = SEditIDTextField.getText();
-        String name = SEditNameTextField.getText();
-        String email = SEditEmailTextField.getText();
-        String intake = SEditIntakeCombo.getValue();
-        String password = SEditPasswordTextField.getText();
+                try {
+                    editStudentData(studentFilePath, id, name, email, intake, password);
+                    editUserData(userFilePath, id, name, email, password);
 
-        try {
-            editStudentData(studentFilePath, id, name, email, intake, password);
-            editUserData(userFilePath, id, name, email, password);
-
-            // Update the table view or perform any other necessary operations
-            if (AUserInfoTableView != null) {
-                ObservableList<AUserInfoTableView.User> observableList = AUserInfoTableView.getItems();
-                for (AUserInfoTableView.User userInfo : observableList) {
-                    if (userInfo.getId().equals(selectedUser.getId())) {
-                        userInfo.setName(name);
-                        userInfo.setEmail(email);
+                    // Update the table view or perform any other necessary operations
+                    if (AUserInfoTableView != null) {
+                        ObservableList<AUserInfoTableView.User> observableList = AUserInfoTableView.getItems();
+                        for (AUserInfoTableView.User userInfo : observableList) {
+                            if (userInfo.getId().equals(selectedUser.getId())) {
+                                userInfo.setName(name);
+                                userInfo.setEmail(email);
+                            }
+                        }
+                        AUserInfoTableView.setItems(observableList);
+                        AUserInfoTableView.refresh();
                     }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                AUserInfoTableView.setItems(observableList);
-                AUserInfoTableView.refresh();
+
+                // Close the customer modify form
+                Stage stage = (Stage) SEditButton.getScene().getWindow();
+                stage.close();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-
-        // Close the customer modify form
-        Stage stage = (Stage) SEditButton.getScene().getWindow();
-        stage.close();
     }
 
     public void setSelectedUser(AUserInfoTableView.User selectedUser) {
