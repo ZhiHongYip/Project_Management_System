@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleTableRowDoubleClick" prefHeight="700.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.SubmissionController">
+   <children>
+      <Label alignment="CENTER" layoutX="440.0" layoutY="14.0" stylesheets="@css/label.css" text="Submission">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <TableView fx:id="submissionTableView" layoutX="41.0" layoutY="50.0" onMouseClicked="#handleTableRowDoubleClick" prefHeight="592.0" prefWidth="898.0">
+         <columns>
+            <TableColumn fx:id="assessmentTypeColumn" prefWidth="212.00000381469727" text="Assessment Type" />
+            <TableColumn fx:id="courseColumn" prefWidth="503.1999969482422" text="Course" />
+            <TableColumn fx:id="dueDateColumn" minWidth="0.0" prefWidth="182.0" text="Due Date" />
+         </columns>
+      </TableView>
+   </children>
+   <stylesheets>
+      <URL value="@css/table.css" />
+      <URL value="@css/label.css" />
+      <URL value="@css/styles.css" />
+   </stylesheets>
+</Pane>

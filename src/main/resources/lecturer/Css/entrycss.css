@@ -1,0 +1,11 @@
+.entry-pending {
+    -fx-background-color: #FE9705;
+}
+
+.entry-reject {
+    -fx-background-color: red;
+}
+
+.entry-black {
+    -fx-text-fill: black;
+}

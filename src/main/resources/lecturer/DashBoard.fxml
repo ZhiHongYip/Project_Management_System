@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="552.0" prefWidth="933.0" style="-fx-background-color: FCF5E2;" stylesheets="@Css/Font.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lecturer.DashBoardController">
+   <children>
+      <HBox prefHeight="619.0" prefWidth="286.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="149.0" prefWidth="264.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="266.0" style="-fx-background-color: FCF5E2;">
+                     <children>
+                        <ImageView fitHeight="157.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-width: 1;">
+                           <VBox.margin>
+                              <Insets bottom="14.0" left="7.0" right="7.0" top="7.0" />
+                           </VBox.margin>
+                           <effect>
+                              <Blend />
+                           </effect>
+                           <image>
+                              <Image url="@Icon/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Line endX="164.2928924560547" endY="1.6033649444580078E-5" startX="-100.0" />
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="280.0" prefWidth="266.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="240.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToDashBoard" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="DASHBOARD" textFill="#0b0b0b" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/presentation.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToCalendar" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="CALENDAR" textFill="#030303" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/request.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToSuperviseeList" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="SUPERVISEES LIST" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <children>
+                              <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/second_marker.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToSecondMarker" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="SECOND MARKER" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="264.0" style="-fx-border-color: #222; -fx-border-width: 0.1; -fx-background-color: #F9A801;">
+                           <children>
+                              <ImageView fitHeight="41.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@Icon/report.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#goToReport" prefHeight="38.0" prefWidth="152.0" style="-fx-border-color: #222; -fx-border-width: 0; -fx-background-color: FECB75;" text="REPORT" HBox.hgrow="ALWAYS">
+                                 <font>
+                                    <Font name="Tw Cen MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <AnchorPane prefHeight="34.0" prefWidth="266.0">
+                     <children>
+                        <ImageView fitHeight="54.0" fitWidth="50.0" layoutX="55.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icon/account.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="label_username" layoutX="117.0" layoutY="25.0" prefHeight="22.0" prefWidth="145.0" text="LECTURER">
+                           <font>
+                              <Font name="Tw Cen MT Bold" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="264.0">
+                     <children>
+                        <Line endX="100.0" startX="-100.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Line>
+                        <Button mnemonicParsing="false" onAction="#signOut" prefHeight="26.0" prefWidth="85.0" stylesheets="@Css/plusbtn.css" text="Log Out" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+         </children>
+      </HBox>
+      <VBox layoutX="268.0" prefHeight="619.0" prefWidth="774.0">
+         <children>
+            <AnchorPane prefHeight="48.0" prefWidth="789.0" style="-fx-background-color: FD5C5A; -fx-border-width: 0.1; -fx-border-color: #222;">
+               <children>
+                  <Text fill="#fcf5e2" layoutX="235.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD" x="78.0">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" prefHeight="177.0" prefWidth="774.0" spacing="10.0">
+               <children>
+                  <Pane prefHeight="181.0" prefWidth="246.0" styleClass="pane_1" stylesheets="@Css/dashboard.css">
+                     <children>
+                        <VBox prefHeight="177.0" prefWidth="245.0" style="-fx-padding: 15,15,15,15;">
+                           <children>
+                              <HBox prefHeight="75.0" prefWidth="247.0">
+                                 <children>
+                                    <Label prefHeight="95.0" prefWidth="156.0" style="-fx-font-size: 14;" text="SUPERVISEE">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="63.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icon/people.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="labelSupervisee" prefHeight="93.0" prefWidth="262.0" style="-fx-font-size: 40;" text="Count">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                     </children></Pane>
+                  <Pane prefHeight="184.0" prefWidth="247.0" styleClass="pane_2" stylesheets="@Css/dashboard.css">
+                     <children>
+                        <VBox prefHeight="177.0" prefWidth="245.0" style="-fx-padding: 15,15,15,15;">
+                           <children>
+                              <HBox prefHeight="75.0" prefWidth="247.0">
+                                 <children>
+                                    <Label prefHeight="95.0" prefWidth="156.0" style="-fx-font-size: 14;" text="PRESENTATION REQUEST" textFill="WHITE" wrapText="true">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="63.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icon/presentaionrequest.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="labelPresentationRequest" prefHeight="93.0" prefWidth="262.0" style="-fx-font-size: 40;" text="Count" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                     </children></Pane>
+                  <Pane prefHeight="183.0" prefWidth="245.0" styleClass="pane_3" stylesheets="@Css/dashboard.css">
+                     <children>
+                        <VBox prefHeight="177.0" prefWidth="245.0" style="-fx-padding: 15,15,15,15;">
+                           <children>
+                              <HBox prefHeight="75.0" prefWidth="247.0">
+                                 <children>
+                                    <Label prefHeight="95.0" prefWidth="156.0" style="-fx-font-size: 14;" text="SCHEDULED PRESENTATION" wrapText="true">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="63.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Icon/people.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="labelScheduledPresentation" prefHeight="83.0" prefWidth="137.0" style="-fx-font-size: 40;" text="Count">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="58.0" prefWidth="73.0" style="-fx-font-size: 15;" text="Today" textAlignment="CENTER" textFill="#8b8888" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </VBox>
+                     </children></Pane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <AnchorPane prefHeight="45.0" prefWidth="789.0" style="-fx-background-color: #F9A801; -fx-border-color: #222; -fx-border-width: 0.1;">
+               <children>
+                  <Text fill="#fcf5e2" layoutX="31.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRESENTATION REQUEST LIST">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="313.0" prefWidth="797.0">
+               <children>
+                  <TableView fx:id="presentationRequestList" layoutY="-1.0" prefHeight="331.0" prefWidth="788.0" style="-fx-background-color: white; -fx-padding: 0;" stylesheets="@Css/table.css">
+                     <columns>
+                        <TableColumn fx:id="columnStudentNo" prefWidth="42.0" text="No" />
+                        <TableColumn fx:id="columnStudentID" prefWidth="84.6666259765625" text="StudentID" />
+                        <TableColumn fx:id="columnName" prefWidth="149.33340454101562" text="Name" />
+                        <TableColumn fx:id="columnDate" prefWidth="91.3333740234375" text="Date" />
+                        <TableColumn fx:id="columnSlot" prefWidth="76.0" text="Slot" />
+                        <TableColumn fx:id="columnSupervisorApproval" prefWidth="121.9998779296875" text="Supervisor Approval" />
+                        <TableColumn fx:id="columnSecondMarkerApproval" prefWidth="150.666748046875" text="Second Marker Approval" />
+                        <TableColumn fx:id="columnStatus" prefWidth="100.0" text="Status" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

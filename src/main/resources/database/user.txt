@@ -1,13 +1,5 @@
 UserID, Name, Email, Password, Role
-2,Yip Zhi Hong,ych@mail.apu.edu.my,1234,projectmanager
+1,Soo Chen Kang,sck@mail.apu.edu.my,1234,student
+2,Yip Zhi Hong,ych@mail.apu.edu.my,1234,lecture
 3,Kong Wei Cheng,kwc@mail.apu.edu.my,1234,admin
-009989,Chan Ka Wai,ckw@mail.apu.edu.my,1234,projectmanager
-7,Eva,1,1,admin
-101,chailam,ckw@mail.apu.edu.my,1234,projectmanager
-adada12,wee,wee,wee,lecturer
-301,Samantha Jones,samantha.j@example.com,samantha_pass_123,student
-302,Michael Williams,michael.w@example.com,michael_secret_456,student
-303,Emma Davis,emma.d@example.com,emma_pwd_789,student
-304,James Johnson,james.j@example.com,james_password_321,student
-305,Olivia Brown,olivia.b@example.com,olivia_pass_654,student
-306,William Anderson,william.a@example.com,william_secret_987,student
+4,Chan Ka Wai,ckw@mail.apu.edu.my,1234,projectmanager

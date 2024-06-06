@@ -1,0 +1,11 @@
+.list-view {
+    -fx-background-color: #d3d3d3;
+}
+
+.list-view .list-cell {
+    -fx-background-color: #f5f5f5;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #9370db;
+}

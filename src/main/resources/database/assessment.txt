@@ -1,1 +1,21 @@
-Assessment id, Assessment name, Description, Type, Intake, Supervisor, Second marker
+Assessment id,Assessment name,Description,Type,Intake,Supervisor,Second marker
+1,Midterm Exam,Midterm assessment for the course,Exam,Fall 2022,101,102
+2,Essay Assignment,Research essay on a given topic,Assignment,Spring 2023,102,103
+3,Presentation,Oral presentation on a chosen topic,Presentation,Fall 2023,102,101
+4,Project Proposal,Proposal for a research project,Assignment,Spring 2024,101,102
+5,Final Exam,Final assessment for the course,Exam,Fall 2024,102,103
+6,Lab Report,Report on laboratory experiment results,Assignment,Spring 2025,103,101
+7,Group Project,Collaborative project work,Project,Fall 2025,101,102
+8,Case Study Analysis,Analysis of a business case study,Assignment,Spring 2026,102,103
+9,Research Paper,Academic research paper,Paper,Fall 2026,103,101
+10,Thesis,Research thesis for graduation,Thesis,Spring 2027,101,102
+11,Portfolio,Collection of student work samples,Portfolio,Fall 2027,102,103
+12,Oral Examination,Oral assessment of student knowledge,Examination,Spring 2028,103,101
+13,Fieldwork Report,Report on fieldwork findings,Report,Fall 2028,101,102
+14,Design Project,Engineering design project,Project,Spring 2029,102,103
+15,Peer Review,Assessment of peer's work,Review,Fall 2029,103,101
+16,Practical Test,Practical skills test,Test,Spring 2030,101,102
+17,Simulation Exercise,Virtual simulation exercise,Exercise,Fall 2030,102,103
+18,Artwork Portfolio,Portfolio of artistic creations,Portfolio,Spring 2031,103,101
+19,Performance Showcase,Showcase of performance skills,Showcase,Fall 2031,101,102
+20,Coding Challenge,Programming challenge,Challenge,Spring 2032,102,103

@@ -1,1 +1,4 @@
-ReportID, Name, Description, StudentID, AssessmentID, MoodleLink, SubmissionDate, Status
+ReportID, Name, StudentID, Intake, AssessmentID, MoodleLink, SubmissionDate, Grade, Status, Feedback, supervisorid, secondmarker id
+1,Computer Architeture,1,Fall 2022,2,src/main/resources/submissions/7-Computer_Architeture/Test1.pdf,2024-05-12,Ungrade,Not Submitted,,102,103
+2,Computer Architeture,2,Spring 2023,2,src/main/resources/submissions/7-Computer_Architeture/Test1.pdf,2024-05-12,Graded,Submitted,Excellent,102,103
+3,Computer Architeture,3,Fall 2023,2,src/main/resources/submissions/7-Computer_Architeture/Introductory (1).pdf,2024-05-12,Ungrade,Submitted,,102,103
