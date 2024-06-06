@@ -1,2 +1,1 @@
-1,Java,use Java,Investigation Report,UCDF2102,-,2,2024-06-20,5,John Doe,individual
-1,Java,use Java,Investigation Report,UCDF2101,-,2,2024-06-20,1,Soo Chen Kang,individual
+1,Java,OODJ concept,Capstone Project-P1,UCDF2107ICT,LC000302,LC065307,2024-09-04,TP065578,Soo Chen Kang1,individual

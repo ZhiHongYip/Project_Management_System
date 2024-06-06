@@ -29,7 +29,7 @@ public class FileSubmissionManager implements SubmissionManager {
         List<SubmissionTable> submissions = new ArrayList<>( );
         Set<String> submittedAssessmentIDs = fileDataReader.getSubmittedAssessmentIDs(userID);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/assessment.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/FinalStudent_Assessment.txt"))) {
             String line;
             while ((line = reader.readLine( )) != null) {
                 String[] fields = line.split(",");
@@ -123,7 +123,7 @@ public class FileSubmissionManager implements SubmissionManager {
                 intake,
                 assessmentID,
                 filePath,
-                submissionTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+                submissionTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                 status,
                 "Submitted",
                 "",

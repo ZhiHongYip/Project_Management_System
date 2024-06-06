@@ -59,7 +59,7 @@ public class Dashboard {
     private List<Assessment> getRemainingAssessments(String userIntake, String currentUserID) {
         List<Assessment> remainingAssessments = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/database/assessment.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/database/FinalStudent_Assessment.txt"))) {
             String line;
             br.readLine();
             while ((line = br.readLine()) != null) {
@@ -123,7 +123,7 @@ public class Dashboard {
         countMap.put("Submitted", 0);
         countMap.put("Not Submitted", 0);
 
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/database/assessment.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/database/FinalStudent_Assessment.txt"))) {
             String line;
             br.readLine();
             while ((line = br.readLine()) != null) {

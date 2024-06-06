@@ -167,7 +167,7 @@ public class studentRegistrationController {
 
     private void writeStudentToFile(String id, String name, String email, String intake, String password) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/database/student.txt", true))) {
-            writer.write(id + "," + name + "," + email + "," + intake + "," + password);
+            writer.write(id + "," + name + "," + email + "," + intake + "," + "" +"," +password);
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();

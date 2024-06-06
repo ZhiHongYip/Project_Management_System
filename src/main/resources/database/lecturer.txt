@@ -1,2 +1,2 @@
-LecturerID, Name, Email, Password
-5,SooooooCK,ck123@gmail.com,ckck
+LC065307,Yip Zhi Hong,yzh@mail.apu.edu.my,1234
+LC000302,Michael Williams,michael.w@example.com,defaultPassword

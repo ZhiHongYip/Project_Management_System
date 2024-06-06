@@ -57,7 +57,7 @@ public class ProjectManagerAssessmentController implements Initializable {
     private TextField fieldDescription;
     @FXML
     private ChoiceBox<String> fieldIntake;
-    private String[] intake = {"UCDF2101", "UCDF2102", "UCDF2103", "UCDF2104", "UCDF2105"};
+    private String[] intake = {"UCDF2107ICT", "UCDF2107ICT(SE)", "UCDF2107ICT(DI)", "UCDF2309ICT(SE)", "UCDF2309ICT(DI)"};
     @FXML
     private ChoiceBox<String> fieldLecture;
     private ObservableList<String> lectureOptions = FXCollections.observableArrayList();

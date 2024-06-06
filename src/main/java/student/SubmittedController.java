@@ -390,7 +390,7 @@ public class SubmittedController {
     protected String getAssessmentType(String assessmentID) {
         String assessmentType = "";
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/assessment.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/database/FinalStudent_Assessment.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -443,12 +443,12 @@ public class SubmittedController {
                     if (existingReportID.equals(reportID)) {
                         if (secondMarkerID.equals("-")) {
                             // Second marker is not assigned, only check supervisor's approval
-                            if (supervisorStatus.equalsIgnoreCase("Approved")) {
+                            if (supervisorStatus.equalsIgnoreCase("Approve")) {
                                 isReportIDAlreadyRequested = true;
                             }
                         } else {
                             // Second marker is assigned, check both supervisor's and second marker's approval
-                            if (!supervisorStatus.equalsIgnoreCase("Rejected") && !secondMarkerStatus.equalsIgnoreCase("Rejected")) {
+                            if (!supervisorStatus.equalsIgnoreCase("Reject") && !secondMarkerStatus.equalsIgnoreCase("Reject")) {
                                 isReportIDAlreadyRequested = true;
                             }
                         }
@@ -457,13 +457,13 @@ public class SubmittedController {
                     if (existingDate.equals(date) && existingSlot.equalsIgnoreCase(formattedSlot)) {
                         if (secondMarkerID.equals("-")) {
                             // Second marker is not assigned, only check supervisor's approval
-                            if (supervisorStatus.equalsIgnoreCase("Pending") && (!existingReportID.equals(reportID) || (existingReportID.equals(reportID) && !supervisorStatus.equalsIgnoreCase("Rejected")))) {
+                            if (supervisorStatus.equalsIgnoreCase("Pending") && (!existingReportID.equals(reportID) || (existingReportID.equals(reportID) && !supervisorStatus.equalsIgnoreCase("Reject")))) {
                                 return true;
                             }
                         } else {
                             // Second marker is assigned, check both supervisor's and second marker's approval
                             if ((supervisorStatus.equalsIgnoreCase("Pending") || secondMarkerStatus.equalsIgnoreCase("Pending"))
-                                    && (!existingReportID.equals(reportID) || (existingReportID.equals(reportID) && !supervisorStatus.equalsIgnoreCase("Rejected") && !secondMarkerStatus.equalsIgnoreCase("Rejected")))) {
+                                    && (!existingReportID.equals(reportID) || (existingReportID.equals(reportID) && !supervisorStatus.equalsIgnoreCase("Reject") && !secondMarkerStatus.equalsIgnoreCase("Reject")))) {
                                 return true;
                             }
                         }
@@ -496,8 +496,8 @@ public class SubmittedController {
                     String secondMarkerStatus = parts[10];
 
                     if (existingReportID.equals(reportID)
-                            && !supervisorStatus.equalsIgnoreCase("Rejected")
-                            && !secondMarkerStatus.equalsIgnoreCase("Rejected")) {
+                            && !supervisorStatus.equalsIgnoreCase("Reject")
+                            && !secondMarkerStatus.equalsIgnoreCase("Reject")) {
                         return true;
                     }
                 }

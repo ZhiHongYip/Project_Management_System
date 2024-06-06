@@ -83,7 +83,7 @@ public class PMS_Controller {
                 currentUserID = userData[0];
                 System.out.println("Current User ID: " + currentUserID);
                 LoadPage("/student/StudentHomePage.fxml", event, actionEvent);
-            } else if (Log_in.equals("True") && userData[4].equals("lecture")) {
+            } else if (Log_in.equals("True") && userData[4].equals("lecturer")) {
                 System.out.println("Navigate to Lecture Page");
                 String path = "/lecturer/DashBoard.fxml";
                 lecturerID = userData[0];

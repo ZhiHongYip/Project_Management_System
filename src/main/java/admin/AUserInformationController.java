@@ -116,19 +116,25 @@ public class AUserInformationController {
                     case "student":
                         fileName = "src/main/resources/database/student.txt";
                         fileName2 = "src/main/resources/database/user.txt";
+                        // Delete the user data from the file
+                        deleteUserData(fileName, userID);
+                        deleteUserData(fileName2,userID);
                         break;
                     case "lecturer":
                         fileName = "src/main/resources/database/lecturer.txt";
                         fileName2 = "src/main/resources/database/user.txt";
+                        // Delete the user data from the file
+                        deleteUserData(fileName, userID);
+                        deleteUserData(fileName2,userID);
                         break;
                     case "projectmanager":
                         fileName = "src/main/resources/database/user.txt";
+                        // Delete the user data from the file
+                        deleteUserData(fileName, userID);
                         break;
                 }
 
-                // Delete the user data from the file
-                deleteUserData(fileName, userID);
-                deleteUserData(fileName2,userID);
+
                 // Remove the user from the table view
                 userInfoTableView.getItems().remove(userInfoTableView.getSelectionModel().getSelectedItem());
             }

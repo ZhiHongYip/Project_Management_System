@@ -179,7 +179,7 @@ public class ReportController extends CellTable implements Initializable  {
     }
 
     private void addUngrade(String[]report)throws IOException{
-        if (report[7].equals("Ungrade")){
+        if (report[7].equals("Ungraded")){
             this.reportData.add(new Report(this.i,report[0],report[2],report[3],report[4],report[6],report[7],report[8]));
             this.i++;
         }

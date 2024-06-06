@@ -1,1 +1,7 @@
-StudentID, Name, Email, Intake, SupervisorID
+TP065578,Soo Chen Kang1,sck@mail.apu.edu.my1,UCDF2107ICT,LC065307,1234
+TP000002,Emily Johnson,emily.j@example.com,UCDF2107ICT(SE),LC065307,P@ssw0rd!
+TP000003,Michael Davis,michael.d@example.com,UCDF2107ICT(SE),LC065307,Qwerty123
+TP000004,Sarah Brown,sarah.b@example.com,UCDF2107ICT(SE),LC065307,9*Ax2&kL
+TP000005,David Wilson,david.w@example.com,UCDF2107ICT(SE),,!P4ssw0rd
+TP000006,Jennifer Lee,jennifer.lee@example.com,UCDF2107ICT(SE),,7gH*2uPq
+TP000007,Kevin Martinez1,kevin.martinez@example.com,UCDF2107ICT(SE),,tR9@xY5z
