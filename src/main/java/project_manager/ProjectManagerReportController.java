@@ -152,14 +152,15 @@ public class ProjectManagerReportController extends Application {
         TextArea reportArea = new TextArea();
         reportArea.setEditable(false);
         reportArea.setText(
-                "<<<<<<<<<<<<<<<<<< Report Structure >>>>>>>>>>>>>>>>>>"+"\n" +
                 "_________________________________________________________________________________" +"\n" +
+                "<<<<<<<<<<<<<<<<<< Report Sofarum >>>>>>>>>>>>>>>>>>"+"\n" +
+                "_________________________________________________________________________________" +"\n" +"\n" +
                 "Report ID: " + report.getReportID() + "\n" +
                         "Name: " + report.getName() + "\n" +
                         "Student_ID: " + report.getStudentID() + "\n" +
                         "Intake Code: " + report.getIntake() + "\n" +
                         "Assessment ID: " + report.getAssessmentID() + "\n" +
-                        "Moodle链接: " + report.getMoodleLink() + "\n" +
+                        "Moodle link: " + report.getMoodleLink() + "\n" +
                         "Submission Date: " + report.getSubmissionDate() + "\n" +
                         "Gradus: " + report.getGrade() + "\n" +
                         "Status: " + report.getStatus() + "\n" +
@@ -167,6 +168,9 @@ public class ProjectManagerReportController extends Application {
                         "Supervisor_ID: " + report.getSupervisorID() + "\n" +
                         "Second Marker_ID: " + report.getSecondMarkerID()+ "\n"
                         +"__________________________________________________________________________________"
+                        +"\n" +
+                        "<<<<<<<<<<<<<<<<<< Project Manager >>>>>>>>>>>>>>>>>>"+"\n" +
+                        "__________________________________________________________________________________"
         );
 
         Scene scene = new Scene(reportArea, 400, 400);

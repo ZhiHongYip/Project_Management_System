@@ -4,11 +4,13 @@ public class StudentData {
     private String studentId;
     private String studentName;
     private String intake;
+    private String status;
 
-    public StudentData(String studentId, String studentName, String intake) {
+    public StudentData(String studentId, String studentName, String intake, String status) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.intake = intake;
+        this.status = status;
     }
 
     public String getStudentId() {
@@ -33,5 +35,13 @@ public class StudentData {
 
     public void setIntake(String intake) {
         this.intake = intake;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

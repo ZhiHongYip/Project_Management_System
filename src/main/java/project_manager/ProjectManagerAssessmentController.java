@@ -290,4 +290,9 @@ public class ProjectManagerAssessmentController implements Initializable {
             System.out.println("No project selected");
         }
     }
+    @FXML
+    public void handleClear(ActionEvent event) {
+        fieldProjectName.clear();
+        fieldDescription.clear();
+    }
 }
