@@ -110,5 +110,15 @@
          </font>
       </Text>
       <ChoiceBox fx:id="fieldLecture2" layoutX="479.0" layoutY="518.0" prefHeight="26.0" prefWidth="174.0" />
+      <Label layoutX="441.0" layoutY="55.0" text="Create Assessment Page">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="clearButton" layoutX="673.0" layoutY="559.0" mnemonicParsing="false" onAction="#handleClear" prefHeight="26.0" prefWidth="294.0" text="Clear" textFill="#8e08d1">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

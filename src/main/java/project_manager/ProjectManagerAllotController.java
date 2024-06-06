@@ -3,7 +3,6 @@ package project_manager;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
-import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,17 +25,17 @@ public class ProjectManagerAllotController implements Initializable {
     @FXML
     private Button exitButton;
     @FXML
+    private Button clearButton;
+    @FXML
     private AnchorPane scenePane;
     @FXML
     private TableView<StudentData> table1;
     @FXML
     private Button buttonAllot;
     @FXML
-    private Button buttonGroupAllot;
-
+    private Button buttonGroup;
     @FXML
     private TableView<ProjectData2> table2;
-
     @FXML
     private TextField ShowAssID;
     @FXML
@@ -60,7 +59,9 @@ public class ProjectManagerAllotController implements Initializable {
     @FXML
     private TextField fieldIntake;
     @FXML
-    private TextField tableStatusField;
+    private TableColumn tableColumnStatus;
+    @FXML
+    private  TextField fieldSearch;
 
     @FXML
     private TableColumn<StudentData, String> tableStudentID;
@@ -84,6 +85,8 @@ public class ProjectManagerAllotController implements Initializable {
     private TableColumn<ProjectData2, String> tableMarker;
     @FXML
     private TableColumn<ProjectData2, String> tableDueDate;
+    @FXML
+    private ChoiceBox<String> choiceboxIntake; // 添加ChoiceBox
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -91,6 +94,10 @@ public class ProjectManagerAllotController implements Initializable {
         initializeProjectTable();
         loadStudentData();
         loadAssessmentData();
+        ObservableList<String> intakeOptions = FXCollections.observableArrayList(
+                "UCDF2101", "UCDF2102", "UCDF2103", "UCDF2104", "UCDF2105"
+        );
+        choiceboxIntake.setItems(intakeOptions);
 
         table1.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -118,6 +125,7 @@ public class ProjectManagerAllotController implements Initializable {
         tableStudentID.setCellValueFactory(new PropertyValueFactory<>("studentId"));
         tableStudentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         tableStudentIntake.setCellValueFactory(new PropertyValueFactory<>("intake"));
+        tableColumnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
     private void initializeProjectTable() {
@@ -136,13 +144,28 @@ public class ProjectManagerAllotController implements Initializable {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                StudentData student = new StudentData(data[0], data[1], data[3]); // 读取 Studentid, name 和 intakecode
+                boolean isAllocated = isStudentAllocated(data[0]);
+                StudentData student = new StudentData(data[0], data[1], data[3], isAllocated ? "have" : "haven't"); // 读取 Studentid, name 和 intakecode
                 studentData.add(student);
             }
             table1.setItems(studentData);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private boolean isStudentAllocated(String studentId) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FINAL_ASSESSMENT_FILE_PATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 9 && data[8].equals(studentId)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     private void loadAssessmentData() {
@@ -206,75 +229,117 @@ public class ProjectManagerAllotController implements Initializable {
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("Data has been successfully written to the file.");
                 successAlert.showAndWait();
+
+                // Update the student's status in the table
+                updateStudentStatus(studentId, "have");
+                table1.refresh();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    //
+
     @FXML
-    public void handleButtonGroupAllot(ActionEvent event) {
-        String intakeCode = fieldIntake.getText();
-        List<String> existingAssignments = loadExistingAssignments();
+    public void handleButtonGroup(ActionEvent event) {
+        String selectedIntakeCode = choiceboxIntake.getValue();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(STUDENT_FILE_PATH))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data[3].equals(intakeCode)) {
-                    String studentId = data[0];
-                    String studentName = data[1];
-                    String assId = ShowAssID.getText();
-                    String assName = ShowAssName.getText();
-                    String description = ShowDescription.getText();
-                    String type = ShowType.getText();
-                    String intake = fieldStudentIntake.getText();
-                    String supervisor = ShowSupervisor.getText();
-                    String secondmarker = ShowSecMarker.getText();
-                    String dueDate = dueDateTextField.getText();
-                    String groupLine = assId + "," + assName + "," + description + "," + type + "," + intake + "," +
-                            supervisor + "," + secondmarker + "," + dueDate + "," + studentId + "," +
-                            studentName + ",group";
+        if (selectedIntakeCode == null) {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Error");
+            errorAlert.setHeaderText(null);
+            errorAlert.setContentText("Please select an IntakeCode.");
+            errorAlert.showAndWait();
+            return;
+        }
 
-                    if (tableStatusField.getText().equals("Have") && isDuplicateAssignment(assId, studentId, "group")) {
-                        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                        errorAlert.setTitle("Error");
-                        errorAlert.setHeaderText(null);
-                        errorAlert.setContentText("This assignment has already been allocated to this student.");
-                        errorAlert.showAndWait();
-                        return;
-                    }
+        // 根据选定的IntakeCode执行群组分配操作
+        groupAllot(selectedIntakeCode);
+    }
 
-                    if (!existingAssignments.contains(assId + "," + studentId + ",group")) {
-                        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FINAL_ASSESSMENT_FILE_PATH, true))) {
-                            writer.write(groupLine);
-                            writer.newLine();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+    private void groupAllot(String selectedIntakeCode) {
+        for (StudentData student : studentData) {
+            if (student.getIntake().equals(selectedIntakeCode)) {
+
+                String studentId = student.getStudentId();
+                String studentName = student.getStudentName();
+                String studentIntake = student.getIntake();
+
+                String assId = ShowAssID.getText();
+                String assName = ShowAssName.getText();
+                String description = ShowDescription.getText();
+                String type = ShowType.getText();
+                String intake = fieldStudentIntake.getText();
+                String supervisor = ShowSupervisor.getText();
+                String secondmarker = ShowSecMarker.getText();
+                String dueDate = dueDateTextField.getText();
+
+                String line = assId + "," + assName + "," + description + "," + type + "," + intake + "," +
+                        supervisor + "," + secondmarker + "," + dueDate + "," + studentId + "," +
+                        studentName + ",Group"; // 在属性末尾加上“Group”字眼
+
+                if (isDuplicateAssignment(assId, studentId, "Group")) {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setTitle("Error");
+                    errorAlert.setHeaderText(null);
+                    errorAlert.setContentText("This assignment has already been allocated to this student.");
+                    errorAlert.showAndWait();
+                    return;
+                }
+
+                Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmAlert.setTitle("Confirmation");
+                confirmAlert.setHeaderText(null);
+                confirmAlert.setContentText("Are you sure you want to allot this assessment?");
+                ButtonType confirmButtonType = new ButtonType("Yes");
+                ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+                confirmAlert.getButtonTypes().setAll(confirmButtonType, cancelButtonType);
+                Optional<ButtonType> result = confirmAlert.showAndWait();
+
+                if (result.isPresent() && result.get() == confirmButtonType) {
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(FINAL_ASSESSMENT_FILE_PATH, true))) {
+                        writer.write(line);
+                        writer.newLine();
+
+                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                        successAlert.setTitle("Success");
+                        successAlert.setHeaderText(null);
+                        successAlert.setContentText("Data has been successfully written to the file.");
+                        successAlert.showAndWait();
+
+                        // Update the student's status in the table
+                        updateStudentStatus(studentId, "have");
+                        table1.refresh();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
             }
-            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-            successAlert.setTitle("Success");
-            successAlert.setHeaderText(null);
-            successAlert.setContentText("Group allotment has been successfully written to the file.");
-            successAlert.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
+    //
+    private void updateStudentStatus(String studentId, String status) {
+        for (StudentData student : studentData) {
+            if (student.getStudentId().equals(studentId)) {
+                student.setStatus(status);
+                table1.refresh();
+                break;
+            }
+        }
+    }
     private boolean isDuplicateAssignment(String assId, String studentId, String type) {
         List<String> existingAssignments = loadExistingAssignments();
         for (String assignment : existingAssignments) {
             String[] data = assignment.split(",");
-            if (data[0].equals(assId) && data[1].equals(studentId) && data[2].equals(type)) {
+            if (data.length >= 3 && data[0].equals(assId) && data[1].equals(studentId) && data[2].equals(type)) {
                 return true;
             }
         }
         return false;
     }
+
 
     private List<String> loadExistingAssignments() {
         List<String> existingAssignments = new ArrayList<>();
@@ -307,5 +372,51 @@ public class ProjectManagerAllotController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void handleSearch(ActionEvent event) {
+        String searchText = fieldSearch.getText().trim(); // 获取搜索框中的内容并去除空格
+
+        if (searchText.isEmpty()) {
+            // 如果搜索框为空，不执行搜索操作
+            return;
+        }
+
+        ObservableList<StudentData> searchResults = FXCollections.observableArrayList();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(STUDENT_FILE_PATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                // 在 Student.txt 中搜索匹配的数据，可以根据需要修改搜索条件
+                if (data[0].contains(searchText) || data[1].contains(searchText) || data[3].contains(searchText)) {
+                    StudentData student = new StudentData(data[0], data[1], data[3],"");
+                    searchResults.add(student);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        table1.setItems(searchResults); // 将搜索结果显示在表格中
+    }
+    @FXML
+    public void handleClear(ActionEvent event) {
+        // 清除搜索框中的文本内容
+        fieldSearch.clear();
+        ShowSecMarker.clear();
+        ShowType.clear();
+        ShowSupervisor.clear();
+        ShowAssName.clear();
+        ShowDescription.clear();
+        ShowAssID.clear();
+        dueDateTextField.clear();
+        fieldStudentID.clear();
+        fieldStudentName.clear();
+        fieldStudentIntake.clear();
+
+        // 恢复表格显示原始的学生数据
+        loadStudentData();
+    }
 }
+
 
